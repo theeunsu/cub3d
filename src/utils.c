@@ -6,15 +6,17 @@
 /*   By: eahn <eahn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:29:54 by eahn              #+#    #+#             */
-/*   Updated: 2024/10/09 12:07:55 by eahn             ###   ########.fr       */
+/*   Updated: 2024/10/09 15:23:23 by eahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+
+
 void	print_error(char *message)
 {
 	write(2, "Error\n", 6);
 	write(2, message, ft_strlen(message));
-	exit(1);
+	exit (1);
 }
