@@ -3,15 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eahn <eahn@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 11:24:43 by eahn              #+#    #+#             */
-/*   Updated: 2024/08/15 20:36:15 by eahn             ###   ########.fr       */
+/*   Updated: 2024/10/12 17:43:11 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+
+#ifndef BUFFER_SIZE
+# define BUFFER_SIZE 32
+
+#endif
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -73,6 +78,7 @@ void				ft_putnbr_fd(int n, int fd);
 /* ETC */
 int					ft_atoi(const char *str);
 char				*ft_itoa(int n);
+char				*get_next_line(int fd);
 
 /* LIST */
 t_list				*ft_lstnew(void *content);
