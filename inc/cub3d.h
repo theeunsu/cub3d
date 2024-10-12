@@ -1,18 +1,16 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/09 12:02:09 by eahn              #+#    #+#             */
-/*   Updated: 2024/10/12 18:00:40 by smiranda         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+
+
+#ifndef CUB3D_H
+# define CUB3D_H
+
+#include "libft.h"
 
 /* malloc, free, exit */
-#include "libft.h"
 #include <stdlib.h>
+
+/* open */
+#include <fcntl.h>
+
 #include <unistd.h>
 #include <fcntl.h>
 
@@ -21,6 +19,25 @@
 
 #endif
 
+
+
+typedef struct s_img
+{
+	
+} t_img;
+
+typedef struct s_map
+{
+	int width;
+	int height;
+	char **grid; // 2D array
+} t_map;
+
+typedef struct s_player
+{
+	int x;
+	int y;		
+} t_player;
 
 typedef struct s_game
 {
@@ -32,6 +49,11 @@ typedef struct s_game
 	float angle;
 	char* map_line;
 	void	*win;
+	t_img	img;
+	t_map	map;
+	t_player player;
 }			t_game;
 
 void		print_error(char *message);
+
+#endif
