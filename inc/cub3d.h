@@ -1,14 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: eahn <eahn@student.42.fr>                  +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/09 12:02:09 by eahn              #+#    #+#             */
-/*   Updated: 2024/10/11 16:47:40 by eahn             ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+
 
 #ifndef CUB3D_H
 # define CUB3D_H
@@ -22,6 +12,13 @@
 #include <fcntl.h>
 
 #include <unistd.h>
+#include <fcntl.h>
+
+#ifndef PI
+#define PI 3.1415926535
+
+#endif
+
 
 
 typedef struct s_img
@@ -45,6 +42,12 @@ typedef struct s_player
 typedef struct s_game
 {
 	void	*mlx;
+	float	x;
+	float	y;
+	float dx;
+	float dy;
+	float angle;
+	char* map_line;
 	void	*win;
 	t_img	img;
 	t_map	map;
