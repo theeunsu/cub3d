@@ -14,6 +14,8 @@
 
 # ifndef PI
 #  define PI 3.1415926535
+#  define INITIAL_LINES 10
+#  define LINE_INCREMENT 5
 
 # endif
 
@@ -26,6 +28,7 @@ typedef struct s_map
 {
 	int			width;
 	int			height;
+	int mcount;  // map count
 	char **grid; // 2D array
 	char		*n_texture;
 	char		*s_texture;

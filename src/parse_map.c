@@ -6,13 +6,34 @@
 /*   By: eahn <eahn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 18:27:25 by eahn              #+#    #+#             */
-/*   Updated: 2024/10/14 23:35:49 by eahn             ###   ########.fr       */
+/*   Updated: 2024/10/15 00:30:55 by eahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	parse_color(t_map *map, char *line, char type)
+static void	parse_grid(t_map *map, char *line)
+{
+	char	**new_grid;
+
+	if (map->mcount >= map->height)
+	{
+		new_grid = ft_realloc(map->grid, sizeof(char *) * (map->height
+					+ LINE_INCREMENT));
+		if (!new_grid)
+			print_error("Failed to reallocate memory for grid.\n");
+		map->grid = new_grid;
+		map->height += LINE_INCREMENT;
+	}
+	map->grid[map->mcount] = ft_strdup(line);
+	if (!map->grid[map->mcount])
+		print_error("Failed to duplicate line.\n");
+	if (ft_strlen(line) > map->width)
+		map->width = ft_strlen(line);
+	map->mcount++;
+}
+
+static void	parse_color(t_map *map, char *line, char type)
 {
 	char	**colors;
 	int		r;
@@ -40,7 +61,7 @@ void	parse_color(t_map *map, char *line, char type)
 /**
  * ft_strtrim: removes spaces/newline in string
  */
-void static	parse_direction(t_map *map, char *line)
+static void	parse_direction(t_map *map, char *line)
 {
 	char	*texture_path;
 
@@ -59,6 +80,27 @@ void static	parse_direction(t_map *map, char *line)
 		print_error("Unknown direction.\n");
 }
 
+static void	process_line(char *line, t_game *game)
+{
+	int	i;
+
+	i = 0;
+	while (ft_isspace(line[i]))
+		i++;
+	if (line[i] == '\0')
+		return ;
+	if (ft_strncmp(line + i, "NO ", 3) == 0 || ft_strcmp(line + i, "SO ") == 0
+		|| ft_strcmp(line + i, "WE ") == 0 || ft_strcmp(line + i, "EA ") == 0)
+		parse_direction(&game->map, line + i);
+	else if (ft_strncmp(line + i, "F ", 2) == 0 || ft_strncmp(line + i, "C ",
+			2) == 0)
+		parse_color(&game->map, line + i, line[0]);
+	else if (line[0] == '1' || line[0] == '0')
+		parse_grid(&game->map, line);
+	else
+		print_error("Invalid line in the map.\n");
+}
+
 void	parse_map(char *file, t_game *game)
 {
 	int		fd;
@@ -70,18 +112,10 @@ void	parse_map(char *file, t_game *game)
 	line = get_next_line(fd);
 	while (line)
 	{
-		if (ft_strncmp(line, "NO ", 3) == 0 || ft_strcmp(line, "SO ") == 0
-			|| ft_strcmp(line, "WE ") == 0 || ft_strcmp(line, "EA ") == 0)
-			parse_direction(&game->map, line); // TBI
-		else if (ft_strncmp(line, "F ", 2) == 0 || ft_strncmp(line, "C ",
-				2) == 0)
-			parse_color(&game->map, line, line[0]); // TBI
-		else if (line[0] == '1' || line[0] == '0')
-			parse_map_grid(&game->map, &game->player, line); // TBI
-		else if (line[0] != '\n')
-			print_error("Invalid line in the map.\n");
+		process_line(line, game);
 		free(line);
 		line = get_next_line(fd);
 	}
 	close(fd);
+	check_map(&game->map); // TBI
 }

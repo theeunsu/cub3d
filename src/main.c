@@ -6,7 +6,7 @@
 /*   By: eahn <eahn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:28:59 by eahn              #+#    #+#             */
-/*   Updated: 2024/10/14 18:27:41 by eahn             ###   ########.fr       */
+/*   Updated: 2024/10/15 00:22:11 by eahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static void	check_args(int ac, char **av)
 	if (ft_strncmp(av[1] + ft_strlen(av[1]) - 4, ".cub", 4))
 		print_error("Invalid file extension.\n");
 }
-
 
 void	init_game(t_game *game)
 {
@@ -40,6 +39,6 @@ int	main(int ac, char **av)
 	check_args(ac, av);
 	parse_map(av[1], game);
 	init_game(game);
-	free_game(game);
+	free_game(game); // TBI
 	return (0);
 }

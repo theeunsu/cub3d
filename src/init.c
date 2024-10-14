@@ -6,7 +6,7 @@
 /*   By: eahn <eahn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 18:14:44 by smiranda          #+#    #+#             */
-/*   Updated: 2024/10/14 18:26:15 by eahn             ###   ########.fr       */
+/*   Updated: 2024/10/15 00:21:23 by eahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,10 @@ static void	init_map(t_map *map)
 {
 	map->width = 0;
 	map->height = 0;
-	map->grid = NULL;
+	map->mcount = 0;
+	map->grid = malloc(sizeof(char *) * INITIAL_LINES);
+	if (!map->grid)
+		print_error("Failed to allocate memory for grid.\n");
 	map->n_texture = NULL;
 	map->s_texture = NULL;
 	map->w_texture = NULL;
@@ -45,7 +48,7 @@ void	init_struct(t_game *game)
 {
 	game->mlx = NULL;
 	game->win = NULL;
-	init_map(game->map);
-	init_img(game->img);
-	init_player(game->player);
+	init_map(&game->map);
+	init_img(&game->img);
+	init_player(&game->player);
 }
