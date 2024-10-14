@@ -3,19 +3,49 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eahn <eahn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 18:14:44 by smiranda          #+#    #+#             */
-/*   Updated: 2024/10/12 18:14:57 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/14 18:26:15 by eahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub3d.h"
+#include "cub3d.h"
 
-void	init_game(t_game *game)
+static void	init_player(t_player *player)
 {
-    game->mlx = mlx_init();
-    game->win = mlx_new_window(game->mlx, 800, 600, "cub3d");
-    mlx_key_hook(game->win, key_handler, game);
-    mlx_loop(game->mlx);
+	player->x = 0;
+	player->y = 0;
+	player->dx = 0;
+	player->dy = 0;
+	player->plane_x = 0;
+	player->plane_y = 0;
+	player->angle = 0;
+}
+
+static void	init_img(t_img *img)
+{
+	img->img_ptr = NULL;
+}
+
+static void	init_map(t_map *map)
+{
+	map->width = 0;
+	map->height = 0;
+	map->grid = NULL;
+	map->n_texture = NULL;
+	map->s_texture = NULL;
+	map->w_texture = NULL;
+	map->e_texture = NULL;
+	map->f_color = -1;
+	map->c_color = -1;
+}
+
+void	init_struct(t_game *game)
+{
+	game->mlx = NULL;
+	game->win = NULL;
+	init_map(game->map);
+	init_img(game->img);
+	init_player(game->player);
 }
