@@ -28,7 +28,7 @@ typedef struct s_map
 {
 	int			width;
 	int			height;
-	int mcount;  // map count
+	int lcount;  // map line count
 	char **grid; // 2D array
 	char		*n_texture;
 	char		*s_texture;

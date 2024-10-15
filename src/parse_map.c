@@ -6,7 +6,7 @@
 /*   By: eahn <eahn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 18:27:25 by eahn              #+#    #+#             */
-/*   Updated: 2024/10/15 00:30:55 by eahn             ###   ########.fr       */
+/*   Updated: 2024/10/16 00:20:57 by eahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	parse_grid(t_map *map, char *line)
 {
 	char	**new_grid;
 
-	if (map->mcount >= map->height)
+	if (map->lcount >= map->height)
 	{
 		new_grid = ft_realloc(map->grid, sizeof(char *) * (map->height
 					+ LINE_INCREMENT));
@@ -25,12 +25,12 @@ static void	parse_grid(t_map *map, char *line)
 		map->grid = new_grid;
 		map->height += LINE_INCREMENT;
 	}
-	map->grid[map->mcount] = ft_strdup(line);
-	if (!map->grid[map->mcount])
+	map->grid[map->lcount] = ft_strdup(line);
+	if (!map->grid[map->lcount])
 		print_error("Failed to duplicate line.\n");
 	if (ft_strlen(line) > map->width)
 		map->width = ft_strlen(line);
-	map->mcount++;
+	map->lcount++;
 }
 
 static void	parse_color(t_map *map, char *line, char type)
@@ -117,5 +117,5 @@ void	parse_map(char *file, t_game *game)
 		line = get_next_line(fd);
 	}
 	close(fd);
-	check_map(&game->map); // TBI
+	validate_map(&game->map); // TBI
 }
