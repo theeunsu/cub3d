@@ -6,32 +6,11 @@
 /*   By: eahn <eahn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 18:27:25 by eahn              #+#    #+#             */
-/*   Updated: 2024/10/16 00:20:57 by eahn             ###   ########.fr       */
+/*   Updated: 2024/10/16 16:05:50 by eahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-static void	parse_grid(t_map *map, char *line)
-{
-	char	**new_grid;
-
-	if (map->lcount >= map->height)
-	{
-		new_grid = ft_realloc(map->grid, sizeof(char *) * (map->height
-					+ LINE_INCREMENT));
-		if (!new_grid)
-			print_error("Failed to reallocate memory for grid.\n");
-		map->grid = new_grid;
-		map->height += LINE_INCREMENT;
-	}
-	map->grid[map->lcount] = ft_strdup(line);
-	if (!map->grid[map->lcount])
-		print_error("Failed to duplicate line.\n");
-	if (ft_strlen(line) > map->width)
-		map->width = ft_strlen(line);
-	map->lcount++;
-}
 
 static void	parse_color(t_map *map, char *line, char type)
 {
@@ -101,6 +80,21 @@ static void	process_line(char *line, t_game *game)
 		print_error("Invalid line in the map.\n");
 }
 
+static void	parse_grid(t_map *map, char *line)
+{
+	if (map->grid == NULL)
+	{
+		map->grid = (char **)ft_calloc(map->height, sizeof(char *));
+		if (!map->grid)
+			print_error("Failed to allocate memory for grid.\n");
+	}
+	map->grid[map->lcount] = ft_strdup(line);
+	if (!map->grid[map->lcount])
+		print_error("Failed to allocate memory for grid line.\n");
+	ft_strncpy(map->grid[map->lcount], line, map->width);
+	map->lcount++;
+}
+
 void	parse_map(char *file, t_game *game)
 {
 	int		fd;
@@ -112,6 +106,7 @@ void	parse_map(char *file, t_game *game)
 	line = get_next_line(fd);
 	while (line)
 	{
+		get_map_size(line, &game->map);
 		process_line(line, game);
 		free(line);
 		line = get_next_line(fd);

@@ -6,7 +6,7 @@
 /*   By: eahn <eahn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 18:10:36 by smiranda          #+#    #+#             */
-/*   Updated: 2024/10/16 11:08:11 by eahn             ###   ########.fr       */
+/*   Updated: 2024/10/16 16:08:23 by eahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,5 @@ void	validate_map(t_map *map)
 		}
 		i++;
 	}
-	check_player_chars(map); // TBI
+	check_player_chars(map); 
 }

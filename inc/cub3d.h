@@ -3,30 +3,28 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
-
-# include "./MLX42/include/MLX42/MLX42.h"
-#include "libft.h"
+# include "../MLX42/include/MLX42/MLX42.h"
+# include "libft.h"
 
 /* malloc, free, exit */
 # include <stdlib.h>
 
 /* open */
 
-#include <fcntl.h>
-
-#include <unistd.h>
-#include <math.h>
-
-#ifndef PI
-#define PI 3.1415926535
-
-#endif
+# include <fcntl.h>
+# include <math.h>
+# include <unistd.h>
 
 # ifndef PI
 #  define PI 3.1415926535
-#  define INITIAL_LINES 10
-#  define LINE_INCREMENT 5
+# endif
 
+# ifndef WIDTH
+#  define WIDTH 1280
+# endif
+
+# ifndef HEIGHT
+#  define HEIGHT 960
 # endif
 
 typedef struct s_img
@@ -68,6 +66,19 @@ typedef struct s_game
 	t_player	player;
 }				t_game;
 
+
+/* free.c */
+void	free_game(t_game *game);
+void	ft_free_split(char **split);
+
+/* init.c */
+void			init_struct(t_game *game);
+
+/* parse_map.c */
+void			parse_map(char *file, t_game *game);
+
+/* utils.c */
+void			get_map_size(char *line, t_map *map);
 void			print_error(char *message);
 
 #endif
