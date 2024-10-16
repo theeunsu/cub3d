@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eahn <eahn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 18:27:25 by eahn              #+#    #+#             */
-/*   Updated: 2024/10/16 17:30:58 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/16 18:03:21 by eahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,11 @@ static void	parse_grid(t_map *map, char *line)
 		if (!map->grid)
 			print_error("Failed to allocate memory for grid.\n");
 	}
-	map->grid[map->lcount] = ft_strdup(line);
+	map->grid[map->lcount] = ft_calloc(map->width + 1, sizeof(char));
 	if (!map->grid[map->lcount])
 		print_error("Failed to allocate memory for grid line.\n");
 	ft_strncpy(map->grid[map->lcount], line, map->width);
+	map->grid[map->lcount][map->width] = '\0';
 	map->lcount++;
 }
 
@@ -78,18 +79,19 @@ static void	process_line(char *line, t_game *game)
 {
 	int	i;
 
+	line = ft_strtrim(line, " \n");
+	if (line[0] == '\0')
+		return ;
 	i = 0;
 	while (ft_isspace(line[i]))
 		i++;
-	if (line[i] == '\0')
-		return ;
 	if (ft_strncmp(line + i, "NO ", 3) == 0 || ft_strcmp(line + i, "SO ") == 0
 		|| ft_strcmp(line + i, "WE ") == 0 || ft_strcmp(line + i, "EA ") == 0)
 		parse_direction(&game->map, line + i);
 	else if (ft_strncmp(line + i, "F ", 2) == 0 || ft_strncmp(line + i, "C ",
 			2) == 0)
 		parse_color(&game->map, line + i, line[0]);
-	else if (line[0] == '1' || line[0] == '0')
+	else if (line[0] == '1' || line[0] == '0' || ft_strchr(line, ' '))
 		parse_grid(&game->map, line);
 	else
 		print_error("Invalid line in the map.\n");
