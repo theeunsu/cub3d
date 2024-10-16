@@ -3,14 +3,24 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "libft.h"
+
+# include "./MLX42/include/MLX42/MLX42.h"
+#include "libft.h"
 
 /* malloc, free, exit */
 # include <stdlib.h>
 
 /* open */
-# include <fcntl.h>
-# include <unistd.h>
+
+#include <fcntl.h>
+
+#include <unistd.h>
+#include <math.h>
+
+#ifndef PI
+#define PI 3.1415926535
+
+#endif
 
 # ifndef PI
 #  define PI 3.1415926535
