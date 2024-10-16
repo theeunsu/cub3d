@@ -6,17 +6,17 @@
 /*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 11:24:43 by eahn              #+#    #+#             */
-/*   Updated: 2024/10/12 17:43:11 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/16 17:29:56 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 32
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 32
 
-#endif
+# endif
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -38,6 +38,7 @@ int					ft_isdigit(int c);
 int					ft_isprint(int c);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
+int					ft_isspace(char c);
 
 /* STRING */
 size_t				ft_strlen(const char *s);
@@ -57,6 +58,7 @@ char				**ft_split(char const *s, char c);
 char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void				ft_striteri(char *s, void (*f)(unsigned int i, char *));
 int					ft_strcmp(char *s1, char *s2);
+char				*ft_strncpy(char *dest, const char *src, size_t n);
 
 /* MEMORY */
 void				*ft_memset(void *b, int c, size_t len);
@@ -79,6 +81,8 @@ void				ft_putnbr_fd(int n, int fd);
 int					ft_atoi(const char *str);
 char				*ft_itoa(int n);
 char				*get_next_line(int fd);
+char				*gnl_strjoin(char *s1, char *s2);
+char				*gnl_strchr(const char *s, int c);
 
 /* LIST */
 t_list				*ft_lstnew(void *content);

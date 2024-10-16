@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eahn <eahn@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 00:21:42 by eahn              #+#    #+#             */
-/*   Updated: 2024/10/16 00:19:09 by eahn             ###   ########.fr       */
+/*   Updated: 2024/10/16 17:18:53 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	free_game(t_game *game)
 	i = 0;
 	if (game->map.grid)
 	{
-		while (i < game->map.mcount)
+		while (i < game->map.lcount)
 		{
 			free(game->map.grid[i]);
 			i++;
