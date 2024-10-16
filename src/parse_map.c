@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eahn <eahn@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 18:27:25 by eahn              #+#    #+#             */
-/*   Updated: 2024/10/16 16:05:50 by eahn             ###   ########.fr       */
+/*   Updated: 2024/10/16 17:30:58 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,21 @@ static void	parse_direction(t_map *map, char *line)
 		print_error("Unknown direction.\n");
 }
 
+static void	parse_grid(t_map *map, char *line)
+{
+	if (map->grid == NULL)
+	{
+		map->grid = (char **)ft_calloc(map->height, sizeof(char *));
+		if (!map->grid)
+			print_error("Failed to allocate memory for grid.\n");
+	}
+	map->grid[map->lcount] = ft_strdup(line);
+	if (!map->grid[map->lcount])
+		print_error("Failed to allocate memory for grid line.\n");
+	ft_strncpy(map->grid[map->lcount], line, map->width);
+	map->lcount++;
+}
+
 static void	process_line(char *line, t_game *game)
 {
 	int	i;
@@ -80,20 +95,6 @@ static void	process_line(char *line, t_game *game)
 		print_error("Invalid line in the map.\n");
 }
 
-static void	parse_grid(t_map *map, char *line)
-{
-	if (map->grid == NULL)
-	{
-		map->grid = (char **)ft_calloc(map->height, sizeof(char *));
-		if (!map->grid)
-			print_error("Failed to allocate memory for grid.\n");
-	}
-	map->grid[map->lcount] = ft_strdup(line);
-	if (!map->grid[map->lcount])
-		print_error("Failed to allocate memory for grid line.\n");
-	ft_strncpy(map->grid[map->lcount], line, map->width);
-	map->lcount++;
-}
 
 void	parse_map(char *file, t_game *game)
 {
@@ -112,5 +113,5 @@ void	parse_map(char *file, t_game *game)
 		line = get_next_line(fd);
 	}
 	close(fd);
-	validate_map(&game->map); // TBI
+	validate_map(&game->map);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eahn <eahn@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 18:14:44 by smiranda          #+#    #+#             */
-/*   Updated: 2024/10/15 00:21:23 by eahn             ###   ########.fr       */
+/*   Updated: 2024/10/16 17:19:25 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,8 @@ static void	init_map(t_map *map)
 {
 	map->width = 0;
 	map->height = 0;
-	map->mcount = 0;
-	map->grid = malloc(sizeof(char *) * INITIAL_LINES);
-	if (!map->grid)
-		print_error("Failed to allocate memory for grid.\n");
+	map->lcount = 0;
+	map->grid = NULL;
 	map->n_texture = NULL;
 	map->s_texture = NULL;
 	map->w_texture = NULL;

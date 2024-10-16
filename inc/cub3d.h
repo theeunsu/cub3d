@@ -67,6 +67,9 @@ typedef struct s_game
 }				t_game;
 
 
+/* check_map.c */
+void	validate_map(t_map *map);
+
 /* free.c */
 void	free_game(t_game *game);
 void	ft_free_split(char **split);

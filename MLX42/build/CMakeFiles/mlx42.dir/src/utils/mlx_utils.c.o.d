@@ -1,7 +1,7 @@
 CMakeFiles/mlx42.dir/src/utils/mlx_utils.c.o: \
-  /Users/eahn/Documents/Cursus/cub3d/MLX42/src/utils/mlx_utils.c \
-  /Users/eahn/Documents/Cursus/cub3d/MLX42/include/MLX42/MLX42_Int.h \
-  /Users/eahn/Documents/Cursus/cub3d/MLX42/include/MLX42/MLX42.h \
+  /Users/smiranda/Desktop/Project_42/cub3d/MLX42/src/utils/mlx_utils.c \
+  /Users/smiranda/Desktop/Project_42/cub3d/MLX42/include/MLX42/MLX42_Int.h \
+  /Users/smiranda/Desktop/Project_42/cub3d/MLX42/include/MLX42/MLX42.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/include/stddef.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/include/__stddef_max_align_t.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/include/stdint.h \
@@ -32,7 +32,7 @@ CMakeFiles/mlx42.dir/src/utils/mlx_utils.c.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/include/_types/_intmax_t.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/include/_types/_uintmax_t.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/include/stdbool.h \
-  /Users/eahn/Documents/Cursus/cub3d/MLX42/include/lodepng/lodepng.h \
+  /Users/smiranda/Desktop/Project_42/cub3d/MLX42/include/lodepng/lodepng.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/include/string.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/include/_types.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/include/Availability.h \
@@ -45,8 +45,8 @@ CMakeFiles/mlx42.dir/src/utils/mlx_utils.c.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/include/secure/_strings.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/include/secure/_common.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/include/secure/_string.h \
-  /Users/eahn/Documents/Cursus/cub3d/MLX42/include/glad/glad.h \
-  /Users/eahn/Documents/Cursus/cub3d/MLX42/include/KHR/khrplatform.h \
+  /Users/smiranda/Desktop/Project_42/cub3d/MLX42/include/glad/glad.h \
+  /Users/smiranda/Desktop/Project_42/cub3d/MLX42/include/KHR/khrplatform.h \
   /usr/local/include/GLFW/glfw3.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/include/stdlib.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/include/sys/wait.h \

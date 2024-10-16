@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eahn <eahn@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 18:10:36 by smiranda          #+#    #+#             */
-/*   Updated: 2024/10/16 16:08:23 by eahn             ###   ########.fr       */
+/*   Updated: 2024/10/16 17:32:17 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static void	check_player_chars(t_map *map)
 	int	player_count;
 
 	i = 0;
+	player_count = 0;
 	while (i < map->lcount)
 	{
 		j = 0;

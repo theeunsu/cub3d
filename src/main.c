@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eahn <eahn@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:28:59 by eahn              #+#    #+#             */
-/*   Updated: 2024/10/16 16:11:00 by eahn             ###   ########.fr       */
+/*   Updated: 2024/10/16 16:23:54 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ static void	check_args(int ac, char **av)
 
 void	init_game(t_game *game)
 {
-	game->mlx = mlx_init(game->map.width, , "cub3d");
-	mlx_key_hook(game->win, key_handler, game);
+	game->mlx = mlx_init(WIDTH, HEIGHT, "cub3d", 0);
+	// mlx_key_hook(game->win, key_handler, game);
 	mlx_loop(game->mlx);
 }
 

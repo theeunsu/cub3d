@@ -6,26 +6,12 @@
 /*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 14:23:34 by smiranda          #+#    #+#             */
-/*   Updated: 2024/06/19 15:15:37 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/16 16:26:47 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*get_next_line(int fd)
-{
-	static char	*line_buffer;
-	char		*line;
-
-	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (NULL);
-	line_buffer = ft_get_buffer(fd, line_buffer);
-	if (!line_buffer)
-		return (NULL);
-	line = ft_get_line(line_buffer);
-	line_buffer = ft_get_rest(line_buffer);
-	return (line);
-}
 
 char	*ft_get_buffer(int fd, char *line_buffer)
 {
@@ -107,6 +93,21 @@ char	*ft_get_rest(char *line_buffer)
 	line_buffer[i] = '\0';
 	free(rest);
 	return (line_buffer);
+}
+
+char	*get_next_line(int fd)
+{
+	static char	*line_buffer;
+	char		*line;
+
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
+	line_buffer = ft_get_buffer(fd, line_buffer);
+	if (!line_buffer)
+		return (NULL);
+	line = ft_get_line(line_buffer);
+	line_buffer = ft_get_rest(line_buffer);
+	return (line);
 }
 
 // int	main(void)
