@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eahn <eahn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:28:59 by eahn              #+#    #+#             */
-/*   Updated: 2024/10/12 18:12:14 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/15 00:22:11 by eahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,52 +20,25 @@ static void	check_args(int ac, char **av)
 		print_error("Invalid file extension.\n");
 }
 
+void	init_game(t_game *game)
+{
+	game->mlx = mlx_init();
+	game->win = mlx_new_window(game->mlx, 800, 600, "cub3d");
+	mlx_key_hook(game->win, key_handler, game);
+	mlx_loop(game->mlx);
+}
 
 int	main(int ac, char **av)
 {
-	t_game *game;
+	t_game	*game;
 
+	game = malloc(sizeof(t_game));
+	if (!game)
+		print_error("Failed to allocate memory.\n");
+	init_struct(game);
 	check_args(ac, av);
-	read_map(av[1], game);
+	parse_map(av[1], game);
 	init_game(game);
+	free_game(game); // TBI
+	return (0);
 }
-
-void parse_map(char *file, t_game *game)
-{
-    int fd;
-    int ret;
-    char *line;
-    
-
-    fd = open(file, O_RDONLY);
-    if (fd < 0)
-        print_error("Failed to open file.\n");
-    fd = get_next_line(fd, &line);
-    while (fd > 0)
-    {
-        if (ft_strncmp(line, "NO ", 3) == 0 || ft_strcmp(line, "SO ") == 0 || ft_strcmp(line, "WE ") == 0 || ft_strcmp(line, "EA ") == 0)
-            parse_direction(&game->map, line); // TBI
-        else if (ft_strncmp(line, "F ", 2) == 0 || ft_strncmp(line, "C ", 2) == 0)
-            parse_color(&game->map, line, line[0]); // TBI
-        else
-            parse_map_grid(&game->map, &game->player, line); // TBI
-        free(line);
-        ret = get_next_line(fd, &line);
-    }
-    close(fd);
-}
-
-void init_struct(t_game *game)
-{
-    game->mlx = NULL;
-    game->win = NULL;
-    game->img.space = NULL;
-    game->img.wall = NULL;
-    game->img.player = NULL;
-    game->img.exit = NULL;
-    game->img.collec = NULL;
-    game->map.width = 0;
-    game->map.height = 0;
-    game->map.grid = NULL;
-}
-
