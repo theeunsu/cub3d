@@ -6,7 +6,7 @@
 /*   By: eahn <eahn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 18:10:36 by smiranda          #+#    #+#             */
-/*   Updated: 2024/10/16 18:05:45 by eahn             ###   ########.fr       */
+/*   Updated: 2024/10/17 18:14:37 by eahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void	check_player_chars(t_map *map)
 
 	i = 0;
 	player_count = 0;
+	printf("02width: %d, height: %d\n", map->width, map->height);
 	while (i < map->height)
 	{
 		j = 0;
@@ -37,6 +38,7 @@ static void	check_player_chars(t_map *map)
 		}
 		i++;
 	}
+	// printf("player_count: %d\n", player_count);
 	if (player_count != 1)
 		print_error("Map must contain exactly one player.\n");
 }
@@ -69,15 +71,21 @@ void	validate_map(t_map *map)
 	int	j;
 
 	i = 0;
+
+	printf("width: %d, height: %d\n", map->width, map->height);
 	while (i < map->height)
 	{
 		j = 0;
 		while (j < map->width)
 		{
+			printf("grid[%d][%d]: %c\n", i, j, map->grid[i][j]);
 			if (i == 0 || i == map->height - 1 || j == 0 || j == map->width - 1)
 			{
 				if (map->grid[i][j] != '1' && map->grid[i][j] != ' ')
+				{
+					printf("grid[6][32]: '%c' (ASCII: %d)\n", map->grid[6][32], map->grid[6][32]);
 					print_error("Map is not surrounded by walls.\n");
+				}
 			}
 			else if (map->grid[i][j] == ' ')
 				check_empty_spaces(map, i, j);

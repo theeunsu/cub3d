@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eahn <eahn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:28:59 by eahn              #+#    #+#             */
-/*   Updated: 2024/10/16 16:23:54 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/17 17:15:29 by eahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	init_game(t_game *game)
 	mlx_loop(game->mlx);
 }
 
+
+
 int	main(int ac, char **av)
 {
 	t_game	*game;
@@ -38,6 +40,6 @@ int	main(int ac, char **av)
 	check_args(ac, av);
 	parse_map(av[1], game);
 	init_game(game);
-	free_game(game); // TBI
+	free_game(game); 
 	return (0);
 }
