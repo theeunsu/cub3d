@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eahn <eahn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 00:21:42 by eahn              #+#    #+#             */
-/*   Updated: 2024/10/16 17:18:53 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/18 17:38:05 by eahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,31 +19,17 @@ void	free_game(t_game *game)
 	i = 0;
 	if (game->map.grid)
 	{
-		while (i < game->map.lcount)
+		while (i < game->map.height)
 		{
 			free(game->map.grid[i]);
 			i++;
 		}
 		free(game->map.grid);
+        game->map.grid = NULL;
 	}
-	free(game->map.n_texture);
-	free(game->map.s_texture);
-	free(game->map.w_texture);
-	free(game->map.e_texture);
+	// free(game->map.n_texture);
+	// free(game->map.s_texture);
+	// free(game->map.w_texture);
+	// free(game->map.e_texture);
 	free(game);
-}
-
-void	ft_free_split(char **split)
-{
-	int	i;
-
-	i = 0;
-	if (!split)
-		return ;
-	while (split[i])
-	{
-		free(split[i]);
-		i++;
-	}
-	free(split);
 }

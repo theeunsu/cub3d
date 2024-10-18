@@ -68,6 +68,7 @@ typedef struct s_game
 	t_player	player;
 }				t_game;
 
+void	get_map(char *file, t_map *map);
 
 /* check_map.c */
 void	validate_map(t_map *map);

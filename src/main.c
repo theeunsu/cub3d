@@ -6,7 +6,7 @@
 /*   By: eahn <eahn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:28:59 by eahn              #+#    #+#             */
-/*   Updated: 2024/10/17 17:15:29 by eahn             ###   ########.fr       */
+/*   Updated: 2024/10/18 16:42:28 by eahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,9 @@ int	main(int ac, char **av)
 		print_error("Failed to allocate memory.\n");
 	init_struct(game);
 	check_args(ac, av);
+	get_map(av[1], &game->map);
 	parse_map(av[1], game);
 	init_game(game);
-	free_game(game); 
+	// free_game(game); 
 	return (0);
 }
