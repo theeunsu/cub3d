@@ -1,10 +1,10 @@
-NO ./texture/ocean_sq.png
-SO ./texture/ocean1_sq.png
-WE ./texture/ocean2_sq.png
-EA ./texture/ocean3_sq.png
+NO ./texture/image_n.png
+SO ./texture/image_s.png
+WE ./texture/image_e.png
+EA ./texture/image_w.png
 
 F 220,,100,0
-C 225,30,,0
+C 225,30,0
 
 111111111111111111111111111111
 1000000000110000000000001          

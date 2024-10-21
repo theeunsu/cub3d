@@ -1,16 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map.c                                        :+:      :+:    :+:   */
+/*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eahn <eahn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 18:10:36 by smiranda          #+#    #+#             */
-/*   Updated: 2024/10/18 17:39:36 by eahn             ###   ########.fr       */
+/*   Updated: 2024/10/21 16:12:06 by eahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub3d.h"
+#include "cub3d.h"
+
+void	validate_data(t_map *map)
+{
+	if (!map->n_texture || !map->s_texture || !map->w_texture
+		|| !map->e_texture)
+		print_error("Missing texture data (NO, SO, WE, EA).\n");
+	if (map->f_color == -1 || map->c_color == -1)
+		print_error("Missing color data (F, C).\n");
+}
 
 static void	check_player_chars(t_map *map)
 {
@@ -20,7 +29,6 @@ static void	check_player_chars(t_map *map)
 
 	i = 0;
 	player_count = 0;
-	// printf("02width: %d, height: %d\n", map->width, map->height);
 	while (i < map->height)
 	{
 		j = 0;
@@ -38,7 +46,6 @@ static void	check_player_chars(t_map *map)
 		}
 		i++;
 	}
-	// printf("player_count: %d\n", player_count);
 	if (player_count != 1)
 		print_error("Map must contain exactly one player.\n");
 }
@@ -71,21 +78,15 @@ void	validate_map(t_map *map)
 	int	j;
 
 	i = 0;
-
-	printf("width: %d, height: %d\n", map->width, map->height);
 	while (i < map->height)
 	{
 		j = 0;
 		while (j < map->width)
 		{
-			// printf("grid[%d][%d]: %c\n", i, j, map->grid[i][j]);
 			if (i == 0 || i == map->height - 1 || j == 0 || j == map->width - 1)
 			{
 				if (map->grid[i][j] != '1' && map->grid[i][j] != ' ')
-				{
-					// printf("grid[0][30]: '%c' (ASCII: %d)\n", map->grid[0][30], map->grid[0][30]);
 					print_error("Map is not surrounded by walls.\n");
-				}
 			}
 			else if (map->grid[i][j] == ' ')
 				check_empty_spaces(map, i, j);
@@ -93,5 +94,5 @@ void	validate_map(t_map *map)
 		}
 		i++;
 	}
-	check_player_chars(map); 
+	check_player_chars(map);
 }

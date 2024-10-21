@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   build.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eahn <eahn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 15:53:09 by smiranda          #+#    #+#             */
-/*   Updated: 2024/10/12 16:51:57 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/21 16:11:15 by eahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub3d.h"
+#include "cub3d.h"
 
 void key_handler(mlx_key_data_t keydata, void *param)
 {
