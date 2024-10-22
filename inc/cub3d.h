@@ -34,6 +34,17 @@ typedef struct s_img
 	void		*img_ptr;
 }				t_img;
 
+typedef struct s_player
+{
+	float		x;
+	float		y;
+	float		dx;
+	float		dy;
+	float plane_x; // TBD
+	float plane_y; // TBD
+	float angle;   // TBD
+}				t_player;
+
 typedef struct s_map
 {
 	int			width;
@@ -46,18 +57,8 @@ typedef struct s_map
 	char		*e_texture;
 	int			f_color;
 	int			c_color;
+	t_player	player;
 }				t_map;
-
-typedef struct s_player
-{
-	float		x;
-	float		y;
-	float		dx;
-	float		dy;
-	float plane_x; // TBD
-	float plane_y; // TBD
-	float angle;   // TBD
-}				t_player;
 
 typedef struct s_game
 {
@@ -65,7 +66,6 @@ typedef struct s_game
 	void		*win;
 	t_img		img;
 	t_map		map;
-	t_player	player;
 }				t_game;
 
 void	get_map(char *file, t_map *map);
@@ -82,6 +82,15 @@ void			init_struct(t_game *game);
 
 /* parse_map.c */
 void			parse_map(char *file, t_game *game);
+
+/* validate_map.c */
+void	validate_data(t_map *map);
+
+/* parse_direction.c */
+void	parse_direction(t_map *map, char *line);
+
+/* parse_color.c */
+void	parse_color(t_map *map, char *line, char type);
 
 /* utils.c */
 void			get_map_size(char *line, t_map *map);

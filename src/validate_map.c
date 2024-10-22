@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eahn <eahn@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 18:10:36 by smiranda          #+#    #+#             */
-/*   Updated: 2024/10/21 16:12:06 by eahn             ###   ########.fr       */
+/*   Updated: 2024/10/22 21:21:10 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,12 @@ static void	check_player_chars(t_map *map)
 				print_error("Map contains invalid characters.\n");
 			if (map->grid[i][j] == 'N' || map->grid[i][j] == 'S'
 				|| map->grid[i][j] == 'W' || map->grid[i][j] == 'E')
+			{
 				player_count++;
+				map->player.x = j + 0.5;
+				map->player.y = i + 0.5;
+				map->grid[i][j] = '0';
+			}
 			j++;
 		}
 		i++;

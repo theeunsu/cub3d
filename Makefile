@@ -6,7 +6,7 @@
 #    By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/07 15:28:50 by eahn              #+#    #+#              #
-#    Updated: 2024/10/16 17:18:28 by smiranda         ###   ########.fr        #
+#    Updated: 2024/10/22 21:28:08 by smiranda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ LIB = $(LIB_DIR)libft.a
 MLX_LIB = $(MLX_DIR)/build/libmlx42.a
 
 # Source files
-SRCS = $(addprefix $(SRC_DIR), main.c utils.c free.c init.c parse_map.c check_map.c)
+SRCS = $(addprefix $(SRC_DIR), main.c utils.c free.c init.c parse_map.c parse_direction.c validate_map.c parse_color.c )
 
 # Object files
 OBJS = $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRCS))
