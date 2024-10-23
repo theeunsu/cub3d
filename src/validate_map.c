@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eahn <eahn@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 18:10:36 by smiranda          #+#    #+#             */
-/*   Updated: 2024/10/23 18:20:14 by eahn             ###   ########.fr       */
+/*   Updated: 2024/10/23 20:29:38 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,25 @@ static void	assign_player(t_map *map, int *player_count, int i, int j)
 	(*player_count)++;
 	map->player.x = j + 0.5;
 	map->player.y = i + 0.5;
+	map->grid[i][j] = '0';
+}
+
+static void player_store_pos(char angle, t_map *map, int i, int j)
+{
+	if (angle == 'N')
+		map->player.angle = 3 * PI / 2;
+	if (angle == 'S')
+		map->player.angle = PI / 2;
+	if (angle == 'W')
+		map->player.angle = PI;
+	if (angle == 'E')
+		map->player.angle = 0;
+	map->player.x = (j * TILE_SIZE) + TILE_SIZE / 2;
+	map->player.y = (i + TILE_SIZE) + TILE_SIZE / 2;
+	map->player.dx = cos(map->player.angle);
+	map->player.dy = -sin(map->player.angle);
+	map->player.plane_x = i;
+	map->player.plane_y = j;
 	map->grid[i][j] = '0';
 }
 
@@ -38,6 +57,12 @@ static void	check_player_chars(t_map *map)
 			if (c != '1' && c != '0' && c != ' ' && c != 'N' && c != 'S'
 				&& c != 'W' && c != 'E')
 				print_error("Map contains invalid characters.\n");
+			if (map->grid[i][j] == 'N' || map->grid[i][j] == 'S'
+				|| map->grid[i][j] == 'W' || map->grid[i][j] == 'E')
+			{
+				player_count++;
+				player_store_pos(map->grid[i][j], map, i, j);
+			}
 			if (c == 'N' || c == 'S' || c == 'W' || c == 'E')
 				assign_player(map, &player_count, i, j);
 			j++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eahn <eahn@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:28:59 by eahn              #+#    #+#             */
-/*   Updated: 2024/10/23 16:35:05 by eahn             ###   ########.fr       */
+/*   Updated: 2024/10/23 20:27:27 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,6 @@ static void	check_args(int ac, char **av)
 		print_error("Invalid file extension.\n");
 }
 
-void	init_game(t_game *game)
-{
-	game->mlx = mlx_init(WIDTH, HEIGHT, "cub3d", 0);
-	// mlx_key_hook(game->win, key_handler, game);
-	mlx_loop(game->mlx);
-}
-
 int	main(int ac, char **av)
 {
 	t_game	*game;
@@ -38,7 +31,12 @@ int	main(int ac, char **av)
 	check_args(ac, av);
 	get_map(av[1], &game->map);
 	parse_map(av[1], game);
-	init_game(game);
+	// while (i < game->map.height)
+	// {
+	// 	printf("%s\n", game->map.grid[i]);
+	// 	i++;
+	// }
+	start_game(game);
 	free_game(game);
 	system("leaks --list -- cub3D");
 	return (0);
