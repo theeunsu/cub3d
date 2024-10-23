@@ -6,7 +6,7 @@
 /*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 18:10:36 by smiranda          #+#    #+#             */
-/*   Updated: 2024/10/22 21:21:10 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/23 19:29:23 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,25 @@ void	validate_data(t_map *map)
 		print_error("Missing texture data (NO, SO, WE, EA).\n");
 	if (map->f_color == -1 || map->c_color == -1)
 		print_error("Missing color data (F, C).\n");
+}
+
+static void player_store_pos(char angle, t_map *map, int i, int j)
+{
+	if (angle == 'N')
+		map->player.angle = 3 * PI / 2;
+	if (angle == 'S')
+		map->player.angle = PI / 2;
+	if (angle == 'W')
+		map->player.angle = PI;
+	if (angle == 'E')
+		map->player.angle = 0;
+	map->player.x = (j * TILE_SIZE) + TILE_SIZE / 2;
+	map->player.y = (i + TILE_SIZE) + TILE_SIZE / 2;
+	map->player.dx = cos(map->player.angle);
+	map->player.dy = -sin(map->player.angle);
+	map->player.plane_x = i;
+	map->player.plane_y = j;
+	map->grid[i][j] = '0';
 }
 
 static void	check_player_chars(t_map *map)
@@ -43,9 +62,7 @@ static void	check_player_chars(t_map *map)
 				|| map->grid[i][j] == 'W' || map->grid[i][j] == 'E')
 			{
 				player_count++;
-				map->player.x = j + 0.5;
-				map->player.y = i + 0.5;
-				map->grid[i][j] = '0';
+				player_store_pos(map->grid[i][j], map, i, j);
 			}
 			j++;
 		}

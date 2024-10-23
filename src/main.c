@@ -6,7 +6,7 @@
 /*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:28:59 by eahn              #+#    #+#             */
-/*   Updated: 2024/10/22 21:30:30 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/23 19:31:13 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,6 @@ static void	check_args(int ac, char **av)
 	if (ft_strncmp(av[1] + ft_strlen(av[1]) - 4, ".cub", 4))
 		print_error("Invalid file extension.\n");
 }
-
-void	init_game(t_game *game)
-{
-	game->mlx = mlx_init(WIDTH, HEIGHT, "cub3d", 0);
-	// mlx_key_hook(game->win, key_handler, game);
-	mlx_loop(game->mlx);
-}
-
 
 
 int	main(int ac, char **av)
@@ -47,7 +39,7 @@ int	main(int ac, char **av)
 	// 	printf("%s\n", game->map.grid[i]);
 	// 	i++;
 	// }
-	init_game(game);
+	start_game(game);
 	// free_game(game); 
 	return (0);
 }
