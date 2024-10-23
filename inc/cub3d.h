@@ -29,12 +29,12 @@ typedef struct s_tex
 	mlx_texture_t		*ea;
 }						t_tex;
 
-typedef struct s_list_tex
-{
-	char				*tex;
-	char				*val;
-	struct s_list_tex	*next;
-}						t_list_tex;
+// typedef struct s_list_tex
+// {
+// 	char				*tex;
+// 	char				*val;
+// 	struct s_list_tex	*next;
+// }						t_list_tex;
 
 typedef struct s_ray
 {
@@ -93,7 +93,7 @@ typedef struct s_game
 	t_map				map;
 	t_ray				*rays;
 	t_tex				*tex;
-	t_list_tex			*list_tex;
+	// t_list_tex			*list_tex;
 }						t_game;
 
 
@@ -124,5 +124,8 @@ void			parse_color(t_map *map, char *line, char type);
 /* utils.c */
 void					get_map_size(char *line, t_map *map);
 void					print_error(char *message);
+
+/* keys.c */
+void key_handler(mlx_key_data_t keydata, void *param);
 
 #endif
