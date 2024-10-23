@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eahn <eahn@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:28:59 by eahn              #+#    #+#             */
-/*   Updated: 2024/10/21 16:11:10 by eahn             ###   ########.fr       */
+/*   Updated: 2024/10/22 21:30:30 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ void	init_game(t_game *game)
 int	main(int ac, char **av)
 {
 	t_game	*game;
+	// int		i;
 
+	// i = 0;
 	game = malloc(sizeof(t_game));
 	if (!game)
 		print_error("Failed to allocate memory.\n");
@@ -40,6 +42,11 @@ int	main(int ac, char **av)
 	check_args(ac, av);
 	get_map(av[1], &game->map);
 	parse_map(av[1], game);
+	// while (i < game->map.height)
+	// {
+	// 	printf("%s\n", game->map.grid[i]);
+	// 	i++;
+	// }
 	init_game(game);
 	// free_game(game); 
 	return (0);

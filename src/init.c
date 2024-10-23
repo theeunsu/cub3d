@@ -6,7 +6,7 @@
 /*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 18:14:44 by smiranda          #+#    #+#             */
-/*   Updated: 2024/10/16 17:19:25 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/22 21:20:23 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,5 @@ void	init_struct(t_game *game)
 	game->win = NULL;
 	init_map(&game->map);
 	init_img(&game->img);
-	init_player(&game->player);
+	init_player(&game->map.player);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_direction.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eahn <eahn@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:00:15 by eahn              #+#    #+#             */
-/*   Updated: 2024/10/21 17:04:44 by eahn             ###   ########.fr       */
+/*   Updated: 2024/10/22 21:24:25 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /**
  * ft_strtrim: removes spaces/newline in string
  */
-static void	parse_direction(t_map *map, char *line)
+void	parse_direction(t_map *map, char *line)
 {
 	char	*texture_path;
 	char	*trimmed_path;
