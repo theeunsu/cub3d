@@ -6,7 +6,7 @@
 /*   By: eahn <eahn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 16:08:08 by eahn              #+#    #+#             */
-/*   Updated: 2024/10/21 16:10:59 by eahn             ###   ########.fr       */
+/*   Updated: 2024/10/23 18:17:53 by eahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	extract_rgb(char **line)
 {
 	int	rgb;
-	int	comma;
+	int	f_comma;
 
 	while (ft_isspace(**line))
 		(*line)++;
@@ -24,14 +24,14 @@ int	extract_rgb(char **line)
 	rgb = ft_atoi(*line);
 	while (ft_isdigit(**line))
 		(*line)++;
-	comma = 0;
+	f_comma = 0;
 	while (ft_isspace(**line) || **line == ',')
 	{
 		if (**line == ',')
 		{
-			if (comma)
+			if (f_comma)
 				print_error("Invalid RGB value. Multiple commas.\n");
-			comma = 1;
+			f_comma = 1;
 		}
 		(*line)++;
 	}
@@ -40,32 +40,46 @@ int	extract_rgb(char **line)
 	return (rgb);
 }
 
-static void	assign_color(int *color, int r, int g, int b, char *str)
+static void	assign_color(int *color, t_rgb rgb, char *str)
 {
 	if (*color != -1)
 		print_error(str);
-	*color = (r << 16 | g << 8 | b);
+	*color = (rgb.r << 16 | rgb.g << 8 | rgb.b);
+}
+
+static void	check_comma(char *line)
+{
+	int	c_comma;
+
+	c_comma = 0;
+	while (*line)
+	{
+		if (*line == ',')
+			c_comma++;
+		line++;
+	}
+	if (c_comma != 2)
+		print_error("Invalid RGB value. Incorrect format.\n");
 }
 
 void	parse_color(t_map *map, char *line, char type)
 {
-	int	r;
-	int	g;
-	int	b;
+	t_rgb	rgb;
 
 	line += 2;
 	while (ft_isspace(*line))
 		line++;
-	r = extract_rgb(&line);
-	g = extract_rgb(&line);
-	b = extract_rgb(&line);
-	if (!(r >= 0 && r <= 255) || !(g >= 0 && g <= 255) || !(b >= 0 && b <= 255))
+	check_comma(line);
+	rgb.r = extract_rgb(&line);
+	rgb.g = extract_rgb(&line);
+	rgb.b = extract_rgb(&line);
+	if (!(rgb.r >= 0 && rgb.r <= 255) || !(rgb.g >= 0 && rgb.g <= 255)
+		|| !(rgb.b >= 0 && rgb.b <= 255))
 		print_error("RGB values must be between 0 ad 255.\n");
 	if (type == 'F')
-		assign_color(&map->f_color, r, g, b, "Floor color already set.\n");
+		assign_color(&map->f_color, rgb, "Floor color already set.\n");
 	else if (type == 'C')
-		assign_color(&map->c_color, r, g, b, "Ceiling color already set.\n");
+		assign_color(&map->c_color, rgb, "Ceiling color already set.\n");
 	else
 		print_error("Invalid color type.\n");
-	printf("f_color: %d, c_color: %d\n", map->f_color, map->c_color);
 }

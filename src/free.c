@@ -6,7 +6,7 @@
 /*   By: eahn <eahn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 00:21:42 by eahn              #+#    #+#             */
-/*   Updated: 2024/10/18 17:38:05 by eahn             ###   ########.fr       */
+/*   Updated: 2024/10/23 17:03:38 by eahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,24 @@ void	free_game(t_game *game)
 	int	i;
 
 	i = 0;
+	if (!game)
+		return ;
 	if (game->map.grid)
 	{
 		while (i < game->map.height)
 		{
-			free(game->map.grid[i]);
+			if (game->map.grid[i])
+			{
+				free(game->map.grid[i]);
+				game->map.grid[i] = NULL;
+			}
 			i++;
 		}
 		free(game->map.grid);
-        game->map.grid = NULL;
+		game->map.grid = NULL;
+		// free_map (&game->map);
+		// free(game->mlx);
+		free(game);
+		game = NULL;
 	}
-	// free(game->map.n_texture);
-	// free(game->map.s_texture);
-	// free(game->map.w_texture);
-	// free(game->map.e_texture);
-	free(game);
 }

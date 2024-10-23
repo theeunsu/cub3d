@@ -13,9 +13,8 @@
 
 # include <fcntl.h>
 # include <math.h>
+# include <stdio.h>
 # include <unistd.h>
-
-#include <stdio.h>
 
 # ifndef PI
 #  define PI 3.1415926535
@@ -45,6 +44,13 @@ typedef struct s_player
 	float angle;   // TBD
 }				t_player;
 
+typedef struct s_rgb
+{
+	int			r;
+	int			g;
+	int			b;
+}				t_rgb;
+
 typedef struct s_map
 {
 	int			width;
@@ -57,6 +63,7 @@ typedef struct s_map
 	char		*e_texture;
 	int			f_color;
 	int			c_color;
+	t_rgb		rgb;
 	t_player	player;
 }				t_map;
 
@@ -68,14 +75,14 @@ typedef struct s_game
 	t_map		map;
 }				t_game;
 
-void	get_map(char *file, t_map *map);
+void			get_map(char *file, t_map *map);
 
 /* check_map.c */
-void	validate_map(t_map *map);
+void			validate_map(t_map *map);
 
 /* free.c */
-void	free_game(t_game *game);
-void	ft_free_split(char **split);
+void			free_game(t_game *game);
+void			ft_free_split(char **split);
 
 /* init.c */
 void			init_struct(t_game *game);
@@ -84,13 +91,13 @@ void			init_struct(t_game *game);
 void			parse_map(char *file, t_game *game);
 
 /* validate_map.c */
-void	validate_data(t_map *map);
+void			validate_data(t_map *map);
 
 /* parse_direction.c */
-void	parse_direction(t_map *map, char *line);
+void			parse_direction(t_map *map, char *line);
 
 /* parse_color.c */
-void	parse_color(t_map *map, char *line, char type);
+void			parse_color(t_map *map, char *line, char type);
 
 /* utils.c */
 void			get_map_size(char *line, t_map *map);

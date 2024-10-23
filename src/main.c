@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eahn <eahn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:28:59 by eahn              #+#    #+#             */
-/*   Updated: 2024/10/22 21:30:30 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/23 16:35:05 by eahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,10 @@ void	init_game(t_game *game)
 	mlx_loop(game->mlx);
 }
 
-
-
 int	main(int ac, char **av)
 {
 	t_game	*game;
-	// int		i;
 
-	// i = 0;
 	game = malloc(sizeof(t_game));
 	if (!game)
 		print_error("Failed to allocate memory.\n");
@@ -42,12 +38,8 @@ int	main(int ac, char **av)
 	check_args(ac, av);
 	get_map(av[1], &game->map);
 	parse_map(av[1], game);
-	// while (i < game->map.height)
-	// {
-	// 	printf("%s\n", game->map.grid[i]);
-	// 	i++;
-	// }
 	init_game(game);
-	// free_game(game); 
+	free_game(game);
+	system("leaks --list -- cub3D");
 	return (0);
 }
