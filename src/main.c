@@ -6,7 +6,7 @@
 /*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:28:59 by eahn              #+#    #+#             */
-/*   Updated: 2024/10/23 19:31:13 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/23 20:27:27 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,10 @@ static void	check_args(int ac, char **av)
 		print_error("Invalid file extension.\n");
 }
 
-
 int	main(int ac, char **av)
 {
 	t_game	*game;
-	// int		i;
 
-	// i = 0;
 	game = malloc(sizeof(t_game));
 	if (!game)
 		print_error("Failed to allocate memory.\n");
@@ -40,6 +37,7 @@ int	main(int ac, char **av)
 	// 	i++;
 	// }
 	start_game(game);
-	// free_game(game); 
+	free_game(game);
+	system("leaks --list -- cub3D");
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eahn <eahn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 17:29:15 by smiranda          #+#    #+#             */
-/*   Updated: 2024/10/16 17:29:34 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/23 16:21:10 by eahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,3 +29,4 @@ char    *ft_strncpy(char *dest, const char *src, size_t n)
     }
     return dest;
 }
+
