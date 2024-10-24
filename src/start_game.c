@@ -6,7 +6,7 @@
 /*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 19:30:53 by smiranda          #+#    #+#             */
-/*   Updated: 2024/10/23 21:57:47 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/24 13:34:49 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ void	start_game(t_game *game)
 	if (!init_texture(game))
 		print_error("Failed to initialize textures.\n");
 	mlx_key_hook(game->mlx, key_handler, game);
+	mlx_loop_hook(game->mlx, display_update, game);
 	mlx_loop(game->mlx);
+	ft_exit(game); //to do
 }
 
