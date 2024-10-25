@@ -6,7 +6,7 @@
 /*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:00:15 by eahn              #+#    #+#             */
-/*   Updated: 2024/10/23 21:47:01 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/25 18:18:14 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,11 @@
 static char	*trim_path(char *line)
 {
 	char	*path;
-	char	*t_path;
 
 	path = line + 3;
-	while (ft_isspace(*path))
+	while (*path && ft_isspace(*path))
 		path++;
-	t_path = ft_strtrim(path, " \n");
-	if (!t_path)
-		print_error("Invalid texture path. Path cannot be empty.\n");
-	return (t_path);
+	return (ft_strtrim(path, " "));
 }
 
 static void	assign_texture(t_map *map, char *line, char *t_path)
@@ -38,7 +34,7 @@ static void	assign_texture(t_map *map, char *line, char *t_path)
 		map->e_texture = t_path;
 	else
 	{
-		free(t_path);
+		// free(t_path);
 		print_error("Unknown direction.\n");
 	}
 }
@@ -56,6 +52,10 @@ void	parse_direction(t_map *map, char *line)
 		print_error("Invalid texture path. Failed to open file.\n");
 	}
 	assign_texture(map, line, t_path);
+	printf("Assigned textures:\n");
+	printf("game->map.n_texture: %s\n", map->n_texture);
+	printf("game->map.s_texture: %s\n", map->s_texture);
+	printf("game->map.w_texture: %s\n", map->w_texture);
+	printf("game->map.e_texture: %s\n", map->e_texture);
 	close(fd);
-	free(t_path);
 }

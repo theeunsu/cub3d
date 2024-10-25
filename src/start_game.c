@@ -6,7 +6,7 @@
 /*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 19:30:53 by smiranda          #+#    #+#             */
-/*   Updated: 2024/10/25 17:03:44 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/25 18:32:29 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,12 @@ static int	tex_check(t_game *game)
 
 static int	init_texture(t_game *game)
 {
-	game->tex = safe_malloc(sizeof(t_tex));
+	game->tex = ft_calloc(1, sizeof(t_tex));
+	if (!game->tex)
+	{
+		printf("Failed to allocate memory for textures.\n");
+		return (0);
+	}
 	if (!tex_check(game))
 	{
 		free(game->tex);

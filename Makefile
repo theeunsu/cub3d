@@ -6,13 +6,13 @@
 #    By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/07 15:28:50 by eahn              #+#    #+#              #
-#    Updated: 2024/10/25 16:15:04 by smiranda         ###   ########.fr        #
+#    Updated: 2024/10/25 17:16:07 by smiranda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Compiler and flags
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I$(INC_DIR) -I$(LIB_DIR) -I$(MLX_DIR)/include/MLX42
+CFLAGS = -Wall -Wextra -Werror -I$(INC_DIR) -I$(LIB_DIR) -I$(MLX_DIR)/include/MLX42 -g
 
 # Target name
 NAME = cub3D
