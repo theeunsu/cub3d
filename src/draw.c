@@ -6,13 +6,13 @@
 /*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 08:51:55 by smiranda          #+#    #+#             */
-/*   Updated: 2024/10/25 11:06:07 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/25 11:47:47 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-mlx_texture_t	*select_texture(t_game *game, int flag)
+static mlx_texture_t	*select_texture(t_game *game, int flag)
 {
 	mlx_texture_t	*tex;
 
@@ -34,7 +34,7 @@ mlx_texture_t	*select_texture(t_game *game, int flag)
 	}
 }
 
-double	get_offset(t_game *game, mlx_texture_t *tex, int flag)
+static double	get_offset(t_game *game, mlx_texture_t *tex, int flag)
 {
 	double	offset;
 
@@ -45,19 +45,7 @@ double	get_offset(t_game *game, mlx_texture_t *tex, int flag)
 	return (offset);
 }
 
-int	color_fix(int color)
-{
-	unsigned int	b;
-
-	b = 0;
-	b |= (color & 0xFF000000) >> 24;
-	b |= (color & 0x00FF0000) >> 8;
-	b |= (color & 0x0000FF00) << 8;
-	b |= (color & 0x000000FF) << 24;
-	return (b);
-}
-
-void	draw_walls(t_game *game, int wall_start, int wall_end,
+static void	draw_walls(t_game *game, int wall_start, int wall_end,
 		double wall_height)
 {
 	double			offset_x;
@@ -86,7 +74,7 @@ void	draw_walls(t_game *game, int wall_start, int wall_end,
 	}
 }
 
-void	draw_f_c(t_game *game, int ray, int wall_start, int wall_end)
+static void	draw_f_c(t_game *game, int ray, int wall_start, int wall_end)
 {
 	int	i;
 

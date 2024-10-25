@@ -6,13 +6,13 @@
 /*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 19:30:53 by smiranda          #+#    #+#             */
-/*   Updated: 2024/10/24 13:34:49 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/25 11:35:42 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int tex_check(t_game *game)
+static int tex_check(t_game *game)
 {
 	mlx_texture_t *tex;
 
@@ -21,7 +21,7 @@ int tex_check(t_game *game)
 		return (0); //tbd with sister
 }
 
-int init_texture(t_game *game)
+static int init_texture(t_game *game)
 {
 	game->tex = malloc(sizeof(t_tex));
 	if (!game->tex)
