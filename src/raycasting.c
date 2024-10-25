@@ -6,7 +6,7 @@
 /*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 13:35:24 by smiranda          #+#    #+#             */
-/*   Updated: 2024/10/25 11:45:58 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/25 16:29:42 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ static float vertical_intersection(t_game *game, float angle)
 
     x_step = TILE_SIZE;
     y_step = TILE_SIZE * tan(angle);
-    x = floor(game->map.player.x / TILE_SIZE) * TILE_SIZE;
+    x = floor(game->map.player->x / TILE_SIZE) * TILE_SIZE;
     pixel = intersection(angle, &x, &x_step, 0);
-    y = game->map.player.y + (x - game->map.player.x) * tan(angle);
+    y = game->map.player->y + (x - game->map.player->x) * tan(angle);
     if ((angle_checker(angle, 'x') && y_step < 0)
         || (!angle_checker(angle, 'x') && y_step > 0))
         y_step *= -1;
@@ -73,7 +73,7 @@ static float vertical_intersection(t_game *game, float angle)
     }
     game->rays->v_x = x;
     game->rays->v_y = y;
-    return (sqrt(pow(y - game->map.player.y, 2) + pow(x - game->map.player.x, 2)));
+    return (sqrt(pow(y - game->map.player->y, 2) + pow(x - game->map.player->x, 2)));
 }
 
 static float horizontal_intersection(t_game *game, float angle)
@@ -86,9 +86,9 @@ static float horizontal_intersection(t_game *game, float angle)
 
     x_step = TILE_SIZE / tan(angle);
     y_step = TILE_SIZE;
-    y = floor(game->map.player.y / TILE_SIZE) * TILE_SIZE;
+    y = floor(game->map.player->y / TILE_SIZE) * TILE_SIZE;
     pixel = intersection(angle, &y, &y_step, 1);
-    x = game->map.player.x + (y - game->map.player.y) / tan(angle);
+    x = game->map.player->x + (y - game->map.player->y) / tan(angle);
     if ((angle_checker(angle, 'y') && x_step > 0)
         || (!angle_checker(angle, 'y') && x_step < 0))
         x_step *= -1;
@@ -99,7 +99,7 @@ static float horizontal_intersection(t_game *game, float angle)
     }
     game->rays->h_x = x;
     game->rays->h_y = y;
-    return (sqrt(pow(y - game->map.player.y, 2) + pow(x - game->map.player.x, 2)));
+    return (sqrt(pow(y - game->map.player->y, 2) + pow(x - game->map.player->x, 2)));
 }
 
 void raycasting(t_game *game)
@@ -109,7 +109,7 @@ void raycasting(t_game *game)
     int ray;
 
     ray = 0;
-    game->rays->ray_angle = game->map.player.angle - (game->map.player.fov_radians / 2);
+    game->rays->ray_angle = game->map.player->angle - (game->map.player->fov_radians / 2);
     while (ray < WIDTH)
     {
         game->rays->flag = 0;
@@ -124,6 +124,6 @@ void raycasting(t_game *game)
             game->rays->distance = v_vector;
         draw_game(game, ray);
         ray++;
-        game->rays->ray_angle += (game->map.player.fov_radians / WIDTH);
+        game->rays->ray_angle += (game->map.player->fov_radians / WIDTH);
     }
 }

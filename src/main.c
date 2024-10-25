@@ -6,7 +6,7 @@
 /*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:28:59 by eahn              #+#    #+#             */
-/*   Updated: 2024/10/23 20:27:27 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/25 15:02:41 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,20 @@ static void	check_args(int ac, char **av)
 		print_error("Invalid file extension.\n");
 }
 
+static void	init_struct(t_game *game)
+{
+	game->mlx = NULL;
+	game->img = NULL;
+	game->map.f_color = -1;
+	game->map.c_color = -1;
+	game->rays = safe_malloc(sizeof(t_ray) * WIDTH);
+}
+
 int	main(int ac, char **av)
 {
 	t_game	*game;
 
-	game = malloc(sizeof(t_game));
+	game = ft_calloc(1, sizeof(t_game));
 	if (!game)
 		print_error("Failed to allocate memory.\n");
 	init_struct(game);
