@@ -6,7 +6,7 @@
 /*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 18:14:44 by smiranda          #+#    #+#             */
-/*   Updated: 2024/10/23 16:18:44 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/25 10:34:09 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,4 @@ void	init_struct(t_game *game)
 	// init_img(&game->img);
 	init_player(&game);
 	init_raycast(&game->rays);
-	game->list_tex = NULL; // should i?
 }

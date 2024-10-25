@@ -6,7 +6,7 @@
 /*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 18:10:36 by smiranda          #+#    #+#             */
-/*   Updated: 2024/10/24 11:18:43 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/25 08:51:19 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ static void player_store_pos(char angle, t_map *map, int i, int j)
 	map->player.dy = sin(map->player.angle) * 4;
 	map->player.plane_x = i;
 	map->player.plane_y = j;
+	map->player.fov_radians = FOV * PI / 180;
 	map->grid[i][j] = '0';
 }
 

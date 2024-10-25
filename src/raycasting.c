@@ -6,7 +6,7 @@
 /*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 13:35:24 by smiranda          #+#    #+#             */
-/*   Updated: 2024/10/24 15:41:47 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/25 08:48:36 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,32 @@ float set_angle(double angle)
     return (angle);
 }
 
+float vertical_intersection(t_game *game, float angle)
+{
+    float x;
+    float y;
+    float x_step;
+    float y_step;
+    int pixel;
+
+    x_step = TILE_SIZE;
+    y_step = TILE_SIZE * tan(angle);
+    x = floor(game->map.player.x / TILE_SIZE) * TILE_SIZE;
+    pixel = intersection(angle, &x, &x_step, 0);
+    y = game->map.player.y + (x - game->map.player.x) * tan(angle);
+    if ((angle_checker(angle, 'x') && y_step < 0)
+        || (!angle_checker(angle, 'x') && y_step > 0))
+        y_step *= -1;
+    while (wall_checker(game, x - pixel, y))
+    {
+        x += x_step;
+        y += y_step;
+    }
+    game->rays->v_x = x;
+    game->rays->v_y = y;
+    return (sqrt(pow(y - game->map.player.y, 2) + pow(x - game->map.player.x, 2)));
+}
+
 float horizontal_intersection(t_game *game, float angle)
 {
     float x;
@@ -122,6 +148,7 @@ void raycasting(t_game *game)
         else
             game->rays->distance = v_vector;
         draw_game(game, ray);
+        ray++;
         game->rays->ray_angle += (game->map.player.fov_radians / WIDTH);
     }
 }
