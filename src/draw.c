@@ -6,7 +6,7 @@
 /*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 08:51:55 by smiranda          #+#    #+#             */
-/*   Updated: 2024/10/25 11:47:47 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/25 16:27:07 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static mlx_texture_t	*select_texture(t_game *game, int flag)
 		else
 			tex = game->tex->we;
 	}
+	return (tex);
 }
 
 static double	get_offset(t_game *game, mlx_texture_t *tex, int flag)
@@ -66,7 +67,7 @@ static void	draw_walls(t_game *game, int wall_start, int wall_end,
 		if (game->rays->index >= WIDTH || game->rays->index < 0
 			|| wall_start >= HEIGHT || wall_start < 0)
 			return ;
-		mlx_pixel_put(game->img, game->rays->index, wall_start,
+		mlx_put_pixel(game->img, game->rays->index, wall_start,
 			color_fix(pixel_array[((int)offset_y * tex->width)
 				+ (int)offset_x]));
 		offset_y += scale_factor;
@@ -83,7 +84,7 @@ static void	draw_f_c(t_game *game, int ray, int wall_start, int wall_end)
 	{
 		if (ray >= WIDTH || ray < 0 || i >= HEIGHT || i < 0)
 			return ;
-		mlx_put_pixel(game, ray, i, game->map.f_color);
+		mlx_put_pixel(game->img, ray, i, game->map.f_color);
 		i++;
 	}
 	i = 0;
@@ -91,7 +92,7 @@ static void	draw_f_c(t_game *game, int ray, int wall_start, int wall_end)
 	{
 		if (ray >= WIDTH || ray < 0 || i >= HEIGHT || i < 0)
 			return ;
-		mlx_put_pixel(game, ray, i, game->map.c_color);
+		mlx_put_pixel(game->img, ray, i, game->map.c_color);
 		i++;
 	}
 }
@@ -103,9 +104,9 @@ void	draw_game(t_game *game, int ray)
 	double	wall_end;
 
 	game->rays->distance *= cos(set_angle(game->rays->ray_angle
-				- game->map.player.angle));
-	wall_height = (TILE_SIZE / game->rays->distance) * (WIDTH / 2);
-	tan(game->map.player.fov_radians / 2);
+				- game->map.player->angle));
+	wall_height = (TILE_SIZE / game->rays->distance) * (WIDTH / 2)
+		/ tan(game->map.player->fov_radians / 2);
 	wall_start = (HEIGHT / 2) + (wall_height / 2);
 	wall_end = (HEIGHT / 2) - (wall_height / 2);
 	if (wall_start > HEIGHT)

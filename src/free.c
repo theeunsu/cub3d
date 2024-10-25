@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eahn <eahn@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 00:21:42 by eahn              #+#    #+#             */
-/*   Updated: 2024/10/23 17:03:38 by eahn             ###   ########.fr       */
+/*   Updated: 2024/10/25 15:05:43 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	free_game(t_game *game)
 		}
 		free(game->map.grid);
 		game->map.grid = NULL;
-		// free_map (&game->map);
 		// free(game->mlx);
 		free(game);
 		game = NULL;
