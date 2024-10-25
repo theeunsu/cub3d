@@ -6,7 +6,7 @@
 /*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 08:51:55 by smiranda          #+#    #+#             */
-/*   Updated: 2024/10/25 16:27:07 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/25 17:45:29 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,9 +104,9 @@ void	draw_game(t_game *game, int ray)
 	double	wall_end;
 
 	game->rays->distance *= cos(set_angle(game->rays->ray_angle
-				- game->map.player->angle));
+				- game->map.player.angle));
 	wall_height = (TILE_SIZE / game->rays->distance) * (WIDTH / 2)
-		/ tan(game->map.player->fov_radians / 2);
+		/ tan(game->map.player.fov_radians / 2);
 	wall_start = (HEIGHT / 2) + (wall_height / 2);
 	wall_end = (HEIGHT / 2) - (wall_height / 2);
 	if (wall_start > HEIGHT)

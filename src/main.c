@@ -6,7 +6,7 @@
 /*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:28:59 by eahn              #+#    #+#             */
-/*   Updated: 2024/10/25 15:02:41 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/25 18:30:12 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	init_struct(t_game *game)
 	game->img = NULL;
 	game->map.f_color = -1;
 	game->map.c_color = -1;
-	game->rays = safe_malloc(sizeof(t_ray) * WIDTH);
+	game->rays = ft_calloc(sizeof(t_ray), WIDTH);
 }
 
 int	main(int ac, char **av)

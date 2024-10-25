@@ -85,7 +85,7 @@ typedef struct s_map
 	int				c_color;
 	int				player_count;
 	t_rgb			rgb;
-	t_player		*player;
+	t_player		player;
 }					t_map;
 
 typedef struct s_game
