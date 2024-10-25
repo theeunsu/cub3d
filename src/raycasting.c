@@ -6,28 +6,13 @@
 /*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 13:35:24 by smiranda          #+#    #+#             */
-/*   Updated: 2024/10/25 08:48:36 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/25 11:45:58 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int angle_checker(float angle, char c)
-{
-    if (c == 'x')
-    {
-        if (angle > 0 && angle < PI)
-            return (1);
-    }
-    else if (c == 'y')
-    {
-        if (angle > (PI / 2) && angle < (3 * PI / 2))
-            return (1);
-    }
-    return(0);
-}
-
-int intersection(float angle, float *inter, float *step, int is_h)
+static int intersection(float angle, float *inter, float *step, int is_h)
 {
     if (is_h)
     {
@@ -50,32 +35,22 @@ int intersection(float angle, float *inter, float *step, int is_h)
     return (1);
 }
 
-int wall_checker(t_game *game, float x, float y)
+static int angle_checker(float angle, char c)
 {
-    int x_grid;
-    int y_grid;
-
-    if (x < 0 || y < 0)
-        return (0);
-    x_grid = floor(x / TILE_SIZE);
-    y_grid = floor(y / TILE_SIZE);
-    if (x_grid >= game->map.width || y_grid >= game->map.height)
-        return (0);
-    if (game->map.grid[y_grid][x_grid] == '1') //enough?
-        return (0);
-    return (1);
+    if (c == 'x')
+    {
+        if (angle > 0 && angle < PI)
+            return (1);
+    }
+    else if (c == 'y')
+    {
+        if (angle > (PI / 2) && angle < (3 * PI / 2))
+            return (1);
+    }
+    return(0);
 }
 
-float set_angle(double angle)
-{
-   if (angle < 0)
-       angle += 2 * PI;
-    if (angle > 2 * PI)
-        angle -= 2 * PI;
-    return (angle);
-}
-
-float vertical_intersection(t_game *game, float angle)
+static float vertical_intersection(t_game *game, float angle)
 {
     float x;
     float y;
@@ -101,7 +76,7 @@ float vertical_intersection(t_game *game, float angle)
     return (sqrt(pow(y - game->map.player.y, 2) + pow(x - game->map.player.x, 2)));
 }
 
-float horizontal_intersection(t_game *game, float angle)
+static float horizontal_intersection(t_game *game, float angle)
 {
     float x;
     float y;

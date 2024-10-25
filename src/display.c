@@ -6,13 +6,13 @@
 /*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 15:53:09 by smiranda          #+#    #+#             */
-/*   Updated: 2024/10/25 08:51:31 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/25 11:37:55 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void player_rotation(t_game *game, int i)
+static void player_rotation(t_game *game, int i)
 {
     if (i == 1)
     {
@@ -28,7 +28,7 @@ void player_rotation(t_game *game, int i)
     }
 }
 
-void	set_new_position(t_game *game)
+static void	set_new_position(t_game *game)
 {
 	int	new_x;
 	int	new_y;
@@ -47,7 +47,7 @@ void	set_new_position(t_game *game)
 	}
 }
 
-void	move_player(t_game *game)
+static void	move_player(t_game *game)
 {
 	if (game->map.player.mov_u_d == -1)
 	{
