@@ -59,7 +59,8 @@ typedef struct s_player
 	int mov_u_d;   // up down movement
 	int plane_x; // TBD grid pos 
 	int plane_y; // TBD grid pos
-	double angle; 
+	double angle;
+	float fov_radians;
 }						t_player;
 
 typedef struct s_rgb
@@ -127,5 +128,8 @@ void					print_error(char *message);
 
 /* keys.c */
 void key_handler(mlx_key_data_t keydata, void *param);
+
+/* display.c */
+void	display_update(void *param);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 18:10:36 by smiranda          #+#    #+#             */
-/*   Updated: 2024/10/23 20:29:38 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/24 11:18:43 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ static void player_store_pos(char angle, t_map *map, int i, int j)
 		map->player.angle = 0;
 	map->player.x = (j * TILE_SIZE) + TILE_SIZE / 2;
 	map->player.y = (i + TILE_SIZE) + TILE_SIZE / 2;
-	map->player.dx = cos(map->player.angle);
-	map->player.dy = -sin(map->player.angle);
+	map->player.dx = cos(map->player.angle) * 4;
+	map->player.dy = sin(map->player.angle) * 4;
 	map->player.plane_x = i;
 	map->player.plane_y = j;
 	map->grid[i][j] = '0';
