@@ -20,6 +20,7 @@
 # define WIDTH 1280
 # define HEIGHT 960
 # define TILE_SIZE 30
+# define FOV 60
 
 typedef struct s_tex
 {
