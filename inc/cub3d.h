@@ -106,9 +106,12 @@ void				draw_game(t_game *game, int ray);
 int					color_fix(int color);
 int					wall_checker(t_game *game, float x, float y);
 float				set_angle(double angle);
+void				render_pixel(t_game *game, int x, int y, uint32_t color);
 
 /* free.c */
 void				free_game(t_game *game);
+void				safe_exit(t_game *game, char *message);
+void				free_textures(t_tex *tex);
 
 /* parse_map.c */
 void				parse_map(char *file, t_game *game);

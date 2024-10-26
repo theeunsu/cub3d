@@ -6,7 +6,7 @@
 /*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 19:30:53 by smiranda          #+#    #+#             */
-/*   Updated: 2024/10/26 14:15:17 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/26 19:19:12 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	tex_check(t_game *game)
 {
 	if (!game->map.n_texture || !game->map.s_texture || !game->map.w_texture
 		|| !game->map.e_texture)
-		return (0); // tbd with sister
+		return (0);
 	return (1);
 }
 
@@ -43,17 +43,9 @@ static int	init_texture(t_game *game)
 		game->tex->ea = mlx_load_png(game->map.e_texture);
 	if (!game->tex->no || !game->tex->so || !game->tex->we || !game->tex->ea)
 	{
-		free(game->tex->no);
-		free(game->tex->so);
-		free(game->tex->we);
-		free(game->tex->ea);
-		free(game->tex);
+		free_textures(game->tex);
 		return (0);
 	}
-	printf("game->tex->no: %p\n", game->tex->no);
-	printf("game->tex->so: %p\n", game->tex->so);
-	printf("game->tex->we: %p\n", game->tex->we);
-	printf("game->tex->ea: %p\n", game->tex->ea);
 	return (1);
 }
 
@@ -67,5 +59,5 @@ void	start_game(t_game *game)
 	mlx_key_hook(game->mlx, key_handler, game);
 	mlx_loop_hook(game->mlx, display_update, game);
 	mlx_loop(game->mlx);
-		exit(0);
+	safe_exit(game, "Exiting game.\n");
 }

@@ -6,11 +6,21 @@
 /*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 08:51:55 by smiranda          #+#    #+#             */
-/*   Updated: 2024/10/26 18:44:55 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/26 19:07:10 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+typedef struct s_draw_wall_params
+{
+	double				offset_x;
+	double				offset_y;
+	mlx_texture_t		*tex;
+	uint32_t			*pixel_array;
+	double				scale_factor;
+	int					wall_end;
+}						t_draw_wall_params;
 
 static mlx_texture_t	*select_texture(t_game *game, int flag)
 {
@@ -26,8 +36,8 @@ static mlx_texture_t	*select_texture(t_game *game, int flag)
 	}
 	else
 	{
-		if (game->rays->ray_angle > PI / 2 && game->rays->ray_angle < (3 * (PI
-					/ 2)))
+		if (game->rays->ray_angle > PI / 2
+			&& game->rays->ray_angle < (3 * (PI / 2)))
 			tex = game->tex->ea;
 		else
 			tex = game->tex->we;
@@ -47,35 +57,28 @@ static double	get_offset(t_game *game, mlx_texture_t *tex, int flag)
 }
 
 static void	draw_walls(t_game *game, double wall_start, double wall_end,
-	double wall_height)
+		double wall_height)
 {
-	double			offset_x;
-	double			offset_y;
-	mlx_texture_t	*tex;
-	uint32_t		*pixel_array;
-	double			scale_factor;
-	int				texture_y;
-	int				texture_x;
-	uint32_t		color;
+	t_draw_wall_params	params;
+	int					texture_y;
+	int					texture_x;
+	uint32_t			color;
 
-	tex = select_texture(game, game->rays->flag);
-	scale_factor = (double)tex->height / wall_height;
-	pixel_array = (uint32_t *)tex->pixels;
-	offset_x = get_offset(game, tex, game->rays->flag);
-	offset_y = (wall_end - (HEIGHT / 2) + (wall_height / 2)) * scale_factor;
-	if (offset_y < 0)
-		offset_y = 0;
+	params.tex = select_texture(game, game->rays->flag);
+	params.scale_factor = (double)params.tex->height / wall_height;
+	params.pixel_array = (uint32_t *)params.tex->pixels;
+	params.offset_x = get_offset(game, params.tex, game->rays->flag);
+	params.offset_y = (wall_end - (HEIGHT / 2) + (wall_height / 2))
+		* params.scale_factor;
+	if (params.offset_y < 0)
+		params.offset_y = 0;
 	while (wall_end < wall_start)
 	{
-		if (game->rays->index >= WIDTH || game->rays->index < 0
-			|| wall_end >= HEIGHT || wall_end < 0)
-			return ;
-		texture_y = (int)offset_y % tex->height;
-		texture_x = (int)offset_x % tex->width;
-		color = pixel_array[texture_y * tex->width + texture_x];
-		mlx_put_pixel(game->img, game->rays->index, wall_end,
-			color_fix(color));
-		offset_y += scale_factor;
+		texture_y = (int)params.offset_y % params.tex->height;
+		texture_x = (int)params.offset_x % params.tex->width;
+		color = params.pixel_array[texture_y * params.tex->width + texture_x];
+		render_pixel(game, game->rays->index, wall_end, color_fix(color));
+		params.offset_y += params.scale_factor;
 		wall_end++;
 	}
 }
