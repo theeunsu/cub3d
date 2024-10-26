@@ -6,7 +6,7 @@
 /*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 11:43:32 by smiranda          #+#    #+#             */
-/*   Updated: 2024/10/25 11:46:40 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/26 15:20:01 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int wall_checker(t_game *game, float x, float y)
     y_grid = floor(y / TILE_SIZE);
     if (x_grid >= game->map.width || y_grid >= game->map.height)
         return (0);
-    if (game->map.grid[y_grid][x_grid] == '1') //enough?
+    if (game->map.grid[y_grid][x_grid] == '1')
         return (0);
     return (1);
 }
@@ -42,9 +42,9 @@ int	color_fix(int color)
 	unsigned int	b;
 
 	b = 0;
-	b |= (color & 0xFF000000) >> 24;
-	b |= (color & 0x00FF0000) >> 8;
-	b |= (color & 0x0000FF00) << 8;
 	b |= (color & 0x000000FF) << 24;
+	b |= (color & 0x0000FF00) << 8;
+	b |= (color & 0x00FF0000) >> 8;
+	b |= (color & 0xFF000000) >> 24;
 	return (b);
 }

@@ -6,7 +6,7 @@
 /*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 08:51:55 by smiranda          #+#    #+#             */
-/*   Updated: 2024/10/25 17:45:29 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/26 18:44:55 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,39 +39,44 @@ static double	get_offset(t_game *game, mlx_texture_t *tex, int flag)
 {
 	double	offset;
 
-	if (flag == 0)
-		offset = (int)fmod(game->rays->v_y, TILE_SIZE) * tex->width / TILE_SIZE;
+	if (flag == 1)
+		offset = fmod(game->rays->h_x, TILE_SIZE) * (tex->width / TILE_SIZE);
 	else
-		offset = (int)fmod(game->rays->h_x, TILE_SIZE) * tex->width / TILE_SIZE;
+		offset = fmod(game->rays->v_y, TILE_SIZE) * (tex->width / TILE_SIZE);
 	return (offset);
 }
 
-static void	draw_walls(t_game *game, int wall_start, int wall_end,
-		double wall_height)
+static void	draw_walls(t_game *game, double wall_start, double wall_end,
+	double wall_height)
 {
 	double			offset_x;
 	double			offset_y;
 	mlx_texture_t	*tex;
 	uint32_t		*pixel_array;
 	double			scale_factor;
+	int				texture_y;
+	int				texture_x;
+	uint32_t		color;
 
 	tex = select_texture(game, game->rays->flag);
 	scale_factor = (double)tex->height / wall_height;
 	pixel_array = (uint32_t *)tex->pixels;
 	offset_x = get_offset(game, tex, game->rays->flag);
-	offset_y = (wall_start - (HEIGHT / 2) + (wall_height / 2)) * scale_factor;
+	offset_y = (wall_end - (HEIGHT / 2) + (wall_height / 2)) * scale_factor;
 	if (offset_y < 0)
 		offset_y = 0;
-	while (wall_start < wall_end)
+	while (wall_end < wall_start)
 	{
 		if (game->rays->index >= WIDTH || game->rays->index < 0
-			|| wall_start >= HEIGHT || wall_start < 0)
+			|| wall_end >= HEIGHT || wall_end < 0)
 			return ;
-		mlx_put_pixel(game->img, game->rays->index, wall_start,
-			color_fix(pixel_array[((int)offset_y * tex->width)
-				+ (int)offset_x]));
+		texture_y = (int)offset_y % tex->height;
+		texture_x = (int)offset_x % tex->width;
+		color = pixel_array[texture_y * tex->width + texture_x];
+		mlx_put_pixel(game->img, game->rays->index, wall_end,
+			color_fix(color));
 		offset_y += scale_factor;
-		wall_start++;
+		wall_end++;
 	}
 }
 

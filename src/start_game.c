@@ -6,7 +6,7 @@
 /*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 19:30:53 by smiranda          #+#    #+#             */
-/*   Updated: 2024/10/25 18:32:29 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/26 14:15:17 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,10 @@ static int	init_texture(t_game *game)
 		free(game->tex);
 		return (0);
 	}
+	printf("game->tex->no: %p\n", game->tex->no);
+	printf("game->tex->so: %p\n", game->tex->so);
+	printf("game->tex->we: %p\n", game->tex->we);
+	printf("game->tex->ea: %p\n", game->tex->ea);
 	return (1);
 }
 
@@ -63,5 +67,5 @@ void	start_game(t_game *game)
 	mlx_key_hook(game->mlx, key_handler, game);
 	mlx_loop_hook(game->mlx, display_update, game);
 	mlx_loop(game->mlx);
-	// ft_exit(game); //to do
+		exit(0);
 }
