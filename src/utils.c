@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eahn <eahn@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:29:54 by eahn              #+#    #+#             */
-/*   Updated: 2024/10/23 18:19:45 by eahn             ###   ########.fr       */
+/*   Updated: 2024/10/26 20:47:03 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-#include <stdio.h>
+#include "../inc/cub3d.h"
 
 void	get_map_size(char *line, t_map *map)
 {

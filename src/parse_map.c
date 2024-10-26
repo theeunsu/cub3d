@@ -6,11 +6,11 @@
 /*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 18:27:25 by eahn              #+#    #+#             */
-/*   Updated: 2024/10/25 18:10:11 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/26 21:18:25 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../inc/cub3d.h"
 
 static void	validate_data(t_map *map)
 {

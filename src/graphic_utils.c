@@ -6,11 +6,11 @@
 /*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 11:43:32 by smiranda          #+#    #+#             */
-/*   Updated: 2024/10/26 19:21:17 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/26 20:33:50 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../inc/cub3d.h"
 
 float	set_angle(double angle)
 {

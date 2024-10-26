@@ -6,11 +6,11 @@
 /*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 19:30:53 by smiranda          #+#    #+#             */
-/*   Updated: 2024/10/26 19:19:12 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/26 20:34:33 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../inc/cub3d.h"
 
 static int	tex_check(t_game *game)
 {

@@ -6,7 +6,7 @@
 #    By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/07 15:28:50 by eahn              #+#    #+#              #
-#    Updated: 2024/10/26 20:00:33 by smiranda         ###   ########.fr        #
+#    Updated: 2024/10/26 21:17:30 by smiranda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,10 +25,10 @@ MLX_DIR = ./MLX42
 OBJ_DIR = ./obj/
 
 # For macOS
-# MLX42FLAGS  := -lglfw -framework Cocoa -framework OpenGL -framework IOKit
+MLX42FLAGS  := -lglfw -framework Cocoa -framework OpenGL -framework IOKit
 
 # For Ubuntu:
-MLX42FLAGS    := -lglfw -ldl -lGL
+# MLX42FLAGS    := -lglfw -ldl -lGL
 
 # Library
 LIB = $(LIB_DIR)libft.a

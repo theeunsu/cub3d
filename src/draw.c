@@ -6,11 +6,11 @@
 /*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 08:51:55 by smiranda          #+#    #+#             */
-/*   Updated: 2024/10/26 19:07:10 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/26 20:33:32 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../inc/cub3d.h"
 
 typedef struct s_draw_wall_params
 {

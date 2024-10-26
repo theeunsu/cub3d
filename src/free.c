@@ -6,11 +6,11 @@
 /*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 00:21:42 by eahn              #+#    #+#             */
-/*   Updated: 2024/10/26 19:27:29 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/26 20:33:39 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../inc/cub3d.h"
 
 void	safe_exit(t_game *game, char *message)
 {

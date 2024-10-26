@@ -6,11 +6,11 @@
 /*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 13:35:24 by smiranda          #+#    #+#             */
-/*   Updated: 2024/10/26 19:12:14 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/26 20:34:26 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../inc/cub3d.h"
 
 static int	intersection(float angle, float *inter, float *step, int is_h)
 {

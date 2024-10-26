@@ -6,11 +6,11 @@
 /*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 21:55:31 by smiranda          #+#    #+#             */
-/*   Updated: 2024/10/26 19:19:04 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/26 20:33:56 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../inc/cub3d.h"
 
 void	key_release(mlx_key_data_t keydata, t_game *game)
 {
