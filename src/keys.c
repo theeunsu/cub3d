@@ -6,7 +6,7 @@
 /*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 21:55:31 by smiranda          #+#    #+#             */
-/*   Updated: 2024/10/25 17:46:33 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/26 13:44:17 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,6 @@ void key_handler(mlx_key_data_t keydata, void *param)
     else if (keydata.key == MLX_KEY_RIGHT && keydata.action == MLX_PRESS)
         game->map.player.rotation = 1;
     else if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
-        // ft_exit(game); //to be done
+        exit(0);
     key_release(keydata, game);
 }
