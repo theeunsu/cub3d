@@ -54,8 +54,6 @@ typedef struct s_player
 {
 	int				x;
 	int				y;
-	double			dx;
-	double			dy;
 	int rotation; // use it?
 	int mov_l_r;  // left right movement
 	int mov_u_d;  // up down movement
