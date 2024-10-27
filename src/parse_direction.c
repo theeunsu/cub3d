@@ -6,11 +6,11 @@
 /*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:00:15 by eahn              #+#    #+#             */
-/*   Updated: 2024/10/25 18:18:14 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/26 21:19:01 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../inc/cub3d.h"
 
 static char	*trim_path(char *line)
 {
@@ -34,7 +34,7 @@ static void	assign_texture(t_map *map, char *line, char *t_path)
 		map->e_texture = t_path;
 	else
 	{
-		// free(t_path);
+		free(t_path);
 		print_error("Unknown direction.\n");
 	}
 }
@@ -57,5 +57,6 @@ void	parse_direction(t_map *map, char *line)
 	printf("game->map.s_texture: %s\n", map->s_texture);
 	printf("game->map.w_texture: %s\n", map->w_texture);
 	printf("game->map.e_texture: %s\n", map->e_texture);
+	// free(t_path);
 	close(fd);
 }

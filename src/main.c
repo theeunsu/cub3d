@@ -6,11 +6,11 @@
 /*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:28:59 by eahn              #+#    #+#             */
-/*   Updated: 2024/10/25 18:30:12 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/26 21:12:45 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../inc/cub3d.h"
 
 static void	check_args(int ac, char **av)
 {

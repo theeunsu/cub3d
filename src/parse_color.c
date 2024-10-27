@@ -6,11 +6,11 @@
 /*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 16:08:08 by eahn              #+#    #+#             */
-/*   Updated: 2024/10/25 16:54:59 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/26 20:34:06 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../inc/cub3d.h"
 
 int	extract_rgb(char **line)
 {

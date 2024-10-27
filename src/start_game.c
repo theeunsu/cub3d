@@ -6,17 +6,17 @@
 /*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 19:30:53 by smiranda          #+#    #+#             */
-/*   Updated: 2024/10/25 18:32:29 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/26 20:34:33 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../inc/cub3d.h"
 
 static int	tex_check(t_game *game)
 {
 	if (!game->map.n_texture || !game->map.s_texture || !game->map.w_texture
 		|| !game->map.e_texture)
-		return (0); // tbd with sister
+		return (0);
 	return (1);
 }
 
@@ -43,11 +43,7 @@ static int	init_texture(t_game *game)
 		game->tex->ea = mlx_load_png(game->map.e_texture);
 	if (!game->tex->no || !game->tex->so || !game->tex->we || !game->tex->ea)
 	{
-		free(game->tex->no);
-		free(game->tex->so);
-		free(game->tex->we);
-		free(game->tex->ea);
-		free(game->tex);
+		free_textures(game->tex);
 		return (0);
 	}
 	return (1);
@@ -63,5 +59,5 @@ void	start_game(t_game *game)
 	mlx_key_hook(game->mlx, key_handler, game);
 	mlx_loop_hook(game->mlx, display_update, game);
 	mlx_loop(game->mlx);
-	// ft_exit(game); //to do
+	safe_exit(game, "Exiting game.\n");
 }

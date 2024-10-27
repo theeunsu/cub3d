@@ -6,13 +6,13 @@
 #    By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/07 15:28:50 by eahn              #+#    #+#              #
-#    Updated: 2024/10/25 17:16:07 by smiranda         ###   ########.fr        #
+#    Updated: 2024/10/26 21:17:30 by smiranda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Compiler and flags
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I$(INC_DIR) -I$(LIB_DIR) -I$(MLX_DIR)/include/MLX42 -g
+CFLAGS = -Wall -Wextra -Werror -Ofast -g #-I$(INC_DIR) -I$(LIB_DIR) -I$(MLX_DIR)/include/MLX42 -g
 
 # Target name
 NAME = cub3D
@@ -21,14 +21,20 @@ NAME = cub3D
 INC_DIR = ./inc/
 LIB_DIR = ./libft/
 SRC_DIR = ./src/
-MLX_DIR = ./MLX42/
+MLX_DIR = ./MLX42
 OBJ_DIR = ./obj/
+
+# For macOS
+MLX42FLAGS  := -lglfw -framework Cocoa -framework OpenGL -framework IOKit
+
+# For Ubuntu:
+# MLX42FLAGS    := -lglfw -ldl -lGL
 
 # Library
 LIB = $(LIB_DIR)libft.a
 
 # MLX library
-MLX_LIB = $(MLX_DIR)/build/libmlx42.a
+MLX_LIB = $(MLX_DIR)/build/libmlx42.a -ldl $(MLX42FLAGS) -pthread -lm
 
 # Source files
 SRCS = $(addprefix $(SRC_DIR), display.c draw.c free.c graphic_utils.c \
@@ -44,7 +50,7 @@ all: $(LIB) libmlx $(OBJS) $(NAME)
 
 # MLX library build rule
 libmlx:
-	@cmake -S $(MLX_DIR) -B $(MLX_DIR)/build
+	@cmake $(MLX_DIR) -B $(MLX_DIR)/build
 	@cmake --build $(MLX_DIR)/build -j4
 
 # Rule to compile source files into object files

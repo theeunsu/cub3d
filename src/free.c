@@ -6,11 +6,31 @@
 /*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 00:21:42 by eahn              #+#    #+#             */
-/*   Updated: 2024/10/25 15:05:43 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/26 20:33:39 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../inc/cub3d.h"
+
+void	safe_exit(t_game *game, char *message)
+{
+	if (game->tex)
+		free_textures(game->tex);
+	if (game->img)
+		mlx_delete_image(game->mlx, game->img);
+	printf("%s", message);
+	free(game);
+	exit(0);
+}
+
+void	free_textures(t_tex *tex)
+{
+	free(tex->no);
+	free(tex->so);
+	free(tex->we);
+	free(tex->ea);
+	free(tex);
+}
 
 void	free_game(t_game *game)
 {
@@ -32,7 +52,6 @@ void	free_game(t_game *game)
 		}
 		free(game->map.grid);
 		game->map.grid = NULL;
-		// free(game->mlx);
 		free(game);
 		game = NULL;
 	}

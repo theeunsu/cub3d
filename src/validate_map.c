@@ -6,11 +6,11 @@
 /*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 18:10:36 by smiranda          #+#    #+#             */
-/*   Updated: 2024/10/26 13:51:10 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/26 20:34:50 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../inc/cub3d.h"
 
 static void	player_store_pos(char angle, t_map *map, int i, int j)
 {
