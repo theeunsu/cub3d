@@ -6,7 +6,7 @@
 /*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 08:51:55 by smiranda          #+#    #+#             */
-/*   Updated: 2024/10/26 20:33:32 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/28 17:02:58 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ static void	draw_f_c(t_game *game, int ray, int wall_start, int wall_end)
 	{
 		if (ray >= WIDTH || ray < 0 || i >= HEIGHT || i < 0)
 			return ;
-		mlx_put_pixel(game->img, ray, i, game->map.f_color);
+		mlx_put_pixel(game->img, ray, i, color_fix(game->map.f_color));
 		i++;
 	}
 	i = 0;
@@ -100,7 +100,7 @@ static void	draw_f_c(t_game *game, int ray, int wall_start, int wall_end)
 	{
 		if (ray >= WIDTH || ray < 0 || i >= HEIGHT || i < 0)
 			return ;
-		mlx_put_pixel(game->img, ray, i, game->map.c_color);
+		mlx_put_pixel(game->img, ray, i, color_fix(game->map.c_color));
 		i++;
 	}
 }

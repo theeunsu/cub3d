@@ -15,6 +15,7 @@
 # include <math.h>
 # include <stdio.h>
 # include <unistd.h>
+# include <stdint.h>
 
 # define PI 3.1415926535
 # define WIDTH 1280
@@ -30,13 +31,6 @@ typedef struct s_tex
 	mlx_texture_t	*we;
 	mlx_texture_t	*ea;
 }					t_tex;
-
-// typedef struct s_list_tex
-// {
-// 	char				*tex;
-// 	char				*val;
-// 	struct s_list_tex	*next;
-// }						t_list_tex;
 
 typedef struct s_ray
 {
@@ -54,18 +48,18 @@ typedef struct s_player
 {
 	int				x;
 	int				y;
-	int rotation; // use it?
-	int mov_l_r;  // left right movement
-	int mov_u_d;  // up down movement
+	int				rotation;
+	int				mov_l_r;
+	int				mov_u_d;
 	double			angle;
 	float			fov_radians;
 }					t_player;
 
 typedef struct s_rgb
 {
-	int				r;
-	int				g;
-	int				b;
+	uint32_t				r;
+	uint32_t				g;
+	uint32_t				b;
 }					t_rgb;
 
 typedef struct s_map
@@ -79,8 +73,8 @@ typedef struct s_map
 	char			*s_texture;
 	char			*w_texture;
 	char			*e_texture;
-	int				f_color;
-	int				c_color;
+	int32_t				f_color;
+	int32_t				c_color;
 	int				player_count;
 	t_rgb			rgb;
 	t_player		player;
@@ -93,7 +87,6 @@ typedef struct s_game
 	t_map			map;
 	t_ray			*rays;
 	t_tex			*tex;
-	// t_list_tex			*list_tex;
 }					t_game;
 
 /* display.c */

@@ -6,7 +6,7 @@
 /*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 15:53:09 by smiranda          #+#    #+#             */
-/*   Updated: 2024/10/26 20:33:25 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/28 11:54:28 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,7 @@ static void	set_new_position(t_game *game, double dx, double dy)
 	i = (new_x / TILE_SIZE);
 	j = (new_y / TILE_SIZE);
 	if (j < 0 || j >= game->map.height || i < 0 || i >= game->map.width)
-	{
-		printf("Attempted to access grid out of bounds: j=%d, i=%d\n", j, i);
 		return ;
-	}
 	if (game->map.grid[j][i] != '1' && game->map.grid[j][game->map.player.x
 		/ TILE_SIZE] != '1' && game->map.grid[game->map.player.y
 		/ TILE_SIZE][i] != '1')
