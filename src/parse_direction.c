@@ -6,7 +6,7 @@
 /*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:00:15 by eahn              #+#    #+#             */
-/*   Updated: 2024/10/26 21:19:01 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/28 18:25:08 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,6 @@ void	parse_direction(t_map *map, char *line)
 		print_error("Invalid texture path. Failed to open file.\n");
 	}
 	assign_texture(map, line, t_path);
-	printf("Assigned textures:\n");
-	printf("game->map.n_texture: %s\n", map->n_texture);
-	printf("game->map.s_texture: %s\n", map->s_texture);
-	printf("game->map.w_texture: %s\n", map->w_texture);
-	printf("game->map.e_texture: %s\n", map->e_texture);
 	// free(t_path);
 	close(fd);
 }

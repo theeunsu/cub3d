@@ -6,7 +6,7 @@
 /*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 18:27:25 by eahn              #+#    #+#             */
-/*   Updated: 2024/10/26 21:18:25 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/28 18:23:04 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static void	process_line(char *line, t_game *game)
 		parse_color(&game->map, t_line, t_line[0]);
 	else if (t_line[0] == '1' || t_line[0] == '0' || t_line[0] == ' ')
 		parse_grid(&game->map, t_line);
-	// free(t_line);
+	free(t_line);
 	return ;
 }
 

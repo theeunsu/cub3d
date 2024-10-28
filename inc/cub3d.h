@@ -15,6 +15,7 @@
 # include <math.h>
 # include <stdio.h>
 # include <unistd.h>
+# include <stdint.h>
 
 # define PI 3.1415926535
 # define WIDTH 1280
@@ -56,9 +57,9 @@ typedef struct s_player
 
 typedef struct s_rgb
 {
-	int32_t				r;
-	int32_t				g;
-	int32_t				b;
+	uint32_t				r;
+	uint32_t				g;
+	uint32_t				b;
 }					t_rgb;
 
 typedef struct s_map
