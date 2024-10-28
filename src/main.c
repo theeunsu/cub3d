@@ -6,7 +6,7 @@
 /*   By: eahn <eahn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:28:59 by eahn              #+#    #+#             */
-/*   Updated: 2024/10/28 19:00:35 by eahn             ###   ########.fr       */
+/*   Updated: 2024/10/28 19:08:19 by eahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,5 @@ int	main(int ac, char **av)
 	parse_map(av[1], game);
 	start_game(game);
 	free_game(game);
-	system("leaks --list -- cub3D");
 	return (0);
 }
