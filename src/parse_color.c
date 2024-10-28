@@ -6,7 +6,7 @@
 /*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 16:08:08 by eahn              #+#    #+#             */
-/*   Updated: 2024/10/26 20:34:06 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/28 16:04:24 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	extract_rgb(char **line)
 {
-	int	rgb;
+	uint32_t	rgb;
 	int	f_comma;
 
 	while (ft_isspace(**line))
@@ -40,7 +40,7 @@ int	extract_rgb(char **line)
 	return (rgb);
 }
 
-static void	assign_color(int *color, t_rgb rgb, char *str)
+static void	assign_color(int32_t *color, t_rgb rgb, char *str)
 {
 	if (*color != -1)
 		print_error(str);

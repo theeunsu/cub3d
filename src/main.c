@@ -6,7 +6,7 @@
 /*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:28:59 by eahn              #+#    #+#             */
-/*   Updated: 2024/10/26 21:12:45 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/28 15:30:25 by smiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int	main(int ac, char **av)
 	// 	printf("%s\n", game->map.grid[i]);
 	// 	i++;
 	// }
+	printf("f_color: %d\n", game->map.f_color);
 	start_game(game);
 	free_game(game);
 	system("leaks --list -- cub3D");
