@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eahn <eahn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:28:59 by eahn              #+#    #+#             */
-/*   Updated: 2024/10/28 18:25:15 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/28 19:00:35 by eahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,6 @@ int	main(int ac, char **av)
 	check_args(ac, av);
 	get_map(av[1], &game->map);
 	parse_map(av[1], game);
-	// while (i < game->map.height)
-	// {
-	// 	printf("%s\n", game->map.grid[i]);
-	// 	i++;
-	// }
 	start_game(game);
 	free_game(game);
 	system("leaks --list -- cub3D");

@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+         #
+#    By: eahn <eahn@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/07 15:28:50 by eahn              #+#    #+#              #
-#    Updated: 2024/10/28 18:23:32 by smiranda         ###   ########.fr        #
+#    Updated: 2024/10/28 18:49:50 by eahn             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Compiler and flags
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -Ofast -g #-I$(INC_DIR) -I$(LIB_DIR) -I$(MLX_DIR)/include/MLX42 -g
+CFLAGS = -Wall -Wextra -Werror -Ofast -g 
 
 # Target name
 NAME = cub3D

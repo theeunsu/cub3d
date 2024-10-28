@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_direction.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eahn <eahn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:00:15 by eahn              #+#    #+#             */
-/*   Updated: 2024/10/28 18:25:08 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/28 18:46:10 by eahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,5 @@ void	parse_direction(t_map *map, char *line)
 		print_error("Invalid texture path. Failed to open file.\n");
 	}
 	assign_texture(map, line, t_path);
-	// free(t_path);
 	close(fd);
 }

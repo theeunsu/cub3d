@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_color.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eahn <eahn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 16:08:08 by eahn              #+#    #+#             */
-/*   Updated: 2024/10/28 18:18:46 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/28 19:00:41 by eahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	extract_rgb(char **line)
 {
 	uint32_t	rgb;
-	int	f_comma;
+	int			f_comma;
 
 	while (ft_isspace(**line))
 		(*line)++;
@@ -44,7 +44,7 @@ static void	assign_color(int32_t *color, t_rgb rgb, char *str)
 {
 	if (*color != -1)
 		print_error(str);
-	   *color = (0xFF000000 | (rgb.b << 16) | (rgb.g << 8) | rgb.r);
+	*color = (0xFF000000 | (rgb.b << 16) | (rgb.g << 8) | rgb.r);
 }
 
 static void	check_comma(char *line)
@@ -73,8 +73,7 @@ void	parse_color(t_map *map, char *line, char type)
 	rgb.r = extract_rgb(&line);
 	rgb.g = extract_rgb(&line);
 	rgb.b = extract_rgb(&line);
-	if (!(rgb.r <= 255) || !(rgb.g <= 255)
-		|| !(rgb.b <= 255))
+	if (!(rgb.r <= 255) || !(rgb.g <= 255) || !(rgb.b <= 255))
 		print_error("RGB values must be between 0 ad 255.\n");
 	if (type == 'F')
 		assign_color(&map->f_color, rgb, "Floor color already set.\n");

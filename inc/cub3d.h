@@ -1,4 +1,14 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eahn <eahn@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/28 19:02:57 by eahn              #+#    #+#             */
+/*   Updated: 2024/10/28 19:03:23 by eahn             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
@@ -13,9 +23,9 @@
 
 # include <fcntl.h>
 # include <math.h>
+# include <stdint.h>
 # include <stdio.h>
 # include <unistd.h>
-# include <stdint.h>
 
 # define PI 3.1415926535
 # define WIDTH 1280
@@ -57,24 +67,23 @@ typedef struct s_player
 
 typedef struct s_rgb
 {
-	uint32_t				r;
-	uint32_t				g;
-	uint32_t				b;
+	uint32_t		r;
+	uint32_t		g;
+	uint32_t		b;
 }					t_rgb;
 
 typedef struct s_map
 {
 	int				width;
 	int				height;
-	int lcount;  // map line count
-	char **grid; // 2D array
-
+	int				lcount;
+	char			**grid;
 	char			*n_texture;
 	char			*s_texture;
 	char			*w_texture;
 	char			*e_texture;
-	int32_t				f_color;
-	int32_t				c_color;
+	int32_t			f_color;
+	int32_t			c_color;
 	int				player_count;
 	t_rgb			rgb;
 	t_player		player;

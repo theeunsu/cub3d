@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smiranda <smiranda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eahn <eahn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 00:21:42 by eahn              #+#    #+#             */
-/*   Updated: 2024/10/26 20:33:39 by smiranda         ###   ########.fr       */
+/*   Updated: 2024/10/28 18:43:41 by eahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	safe_exit(t_game *game, char *message)
 		free_textures(game->tex);
 	if (game->img)
 		mlx_delete_image(game->mlx, game->img);
+	if (game->rays)
+		free(game->rays);
 	printf("%s", message);
 	free(game);
 	exit(0);
